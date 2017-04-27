@@ -1,0 +1,1 @@
+/home/fran/.space-vim/init.vim
