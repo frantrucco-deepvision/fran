@@ -119,48 +119,6 @@ function ocr = {
     rm output_ocr.txt;
 }
 
-
-# PLN (languagemodeling)
-function train = {
-    for number in 1 2 3 4; do
-        python languagemodeling/scripts/train.py -n $number -m ngram -o ../results/$number.plk;
-    done;
-}
-
-function train_add_one = {
-    for number in 1 2 3 4; do
-        python languagemodeling/scripts/train.py -n $number -m addone -o ../results/$number.plk;
-    done;
-}
-
-function generate = {
-    for number in 1 2 3 4; do
-        python languagemodeling/scripts/generate.py -n $1 -i ../results/$number.plk;
-    done;
-}
-
-function testold = {
-    workon pln
-    cd ~/Code/PLN-2017/languagemodeling/tests;
-    pep8 ../*.py; echo "OK"
-    pep8 *.py; echo "OK"
-    nosetests test_addone_ngram.py test_ngram.py test_ngram_generator.py test_interpolated_ngram.py;
-    cd ~/Code/PLN-2017/
-    py3clean .;
-}
-
-function test = {
-    workon pln
-    cd ~/Code/PLN-2017/languagemodeling/tests;
-    pep8 ../*.py; echo "OK"
-    pep8 *.py; echo "OK"
-    nosetests *.py
-    cd ~/Code/PLN-2017/
-    py3clean .;
-}
-
-
-
 # Spacemacs
 export TERM=xterm-256color
 
