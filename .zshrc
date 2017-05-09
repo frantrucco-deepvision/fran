@@ -130,3 +130,19 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # npm
 export PATH="$PATH:$HOME/npm/bin"
+
+# pygments (colourful cat)
+function c = {
+    if [[ $(cat $1 | wc -l) -ge 30 ]]
+    then
+        pygmentize -g $1 | less
+        pygmentize -g $1
+    else
+        pygmentize -g $1
+    fi
+}
+
+function cl = {
+    pygmentize -g $1 | less
+    pygmentize -g $1
+}
