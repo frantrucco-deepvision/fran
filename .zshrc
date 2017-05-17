@@ -131,6 +131,12 @@ source /usr/local/bin/virtualenvwrapper.sh
 # npm
 export PATH="$PATH:$HOME/npm/bin"
 
+# p ipython
+alias p='ipython'
+
+# python plotter
+alias plot='python3 ~/.plotter.py'
+
 # pygments (colourful cat)
 function c = {
     if [[ $(cat $1 | wc -l) -ge 30 ]]
@@ -146,3 +152,31 @@ function cl = {
     pygmentize -g $1 | less
     pygmentize -g $1
 }
+
+# Ghostscript is fucking annoying
+alias gs='gst'
+
+# python3 virtualenv
+workon pln;
+
+# pln
+function train = {
+    time python tagging/scripts/train.py -m base -o tagging/results/base.pickle;
+    for i in 1 2 3 4; do
+        time python tagging/scripts/train.py -m mlhmm -n $i -o tagging/results/mlhmm$i.pickle;
+    done;
+}
+
+function evaluate = {
+    echo "Baseline\n" > tagging/images/output.txt
+    time python tagging/scripts/eval.py -i tagging/results/base.pickle -o tagging/images/base.png --no-progress >> tagging/images/output.txt;
+
+    for i in 1 2 3 4; do
+        echo "\n\nHidden Markov Model with n = $i\n" >> tagging/images/output.txt;
+        time python tagging/scripts/eval.py -i tagging/results/mlhmm$i.pickle -o tagging/images/mlhmm$i.png --no-progress >> tagging/images/output.txt;
+    done;
+}
+
+# Working directory (always give absolute paths)
+cd ~/Code/pln;
+
