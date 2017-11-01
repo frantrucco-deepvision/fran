@@ -106,6 +106,10 @@ alias install="sudo apt-get update; sudo apt-get upgrade -y; sudo apt-get instal
 alias tree="tree -L 3"
 alias sl="ls"
 
+# Irace path
+# Path given by system.file(package="irace")
+export IRACE_HOME=/usr/local/lib/R/site-library/irace
+export PATH=${IRACE_HOME}/bin/:$PATH
 
 # OPAM configuration
 . /home/fran/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -127,6 +131,9 @@ export WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Anaconda
+export PATH=/home/fran/.anaconda3/bin:$PATH
 
 # npm
 export PATH="$PATH:$HOME/npm/bin"
@@ -153,30 +160,42 @@ function cl = {
     pygmentize -g $1
 }
 
+
+function face = {
+    text="127.0.0.1    localhost\n";
+    text+="127.0.1.1    fran-laptop\n\n"
+    text+="::1          ip6-localhost ip6-loopback\n";
+    text+="fe00::0      ip6-localnet\n";
+    text+="ff00::0      ip6-mcastprefix\n";
+    text+="ff02::1      ip6-allnodes\n";
+    text+="ff02::2      ip6-allrouters\n";
+    text+="8.8.8.8      www.facebook.com\n";
+    echo $text > newasdflasdfasdfklj.asdfkjasldkfj;
+    sudo cp newasdflasdfasdfklj.asdfkjasldkfj /etc/hosts;
+    rm newasdflasdfasdfklj.asdfkjasldkfj;
+}
+
+
+# latex
+function latexc = {
+    setopt normstarsilent; mkdir target -p;
+    pdflatex -output-directory=target $1;
+    pdflatex -output-directory=target $1;
+}
+
+# for some weird reason octave runs the gui version by default
+alias octave='octave --no-window-system'
+
 # Ghostscript is fucking annoying
 alias gs='gst'
 
-# python3 virtualenv
-workon pln;
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
-# pln
-function train = {
-    time python tagging/scripts/train.py -m base -o tagging/results/base.pickle;
-    for i in 1 2 3 4; do
-        time python tagging/scripts/train.py -m mlhmm -n $i -o tagging/results/mlhmm$i.pickle;
-    done;
-}
-
-function evaluate = {
-    echo "Baseline\n" > tagging/images/output.txt
-    time python tagging/scripts/eval.py -i tagging/results/base.pickle -o tagging/images/base.png --no-progress >> tagging/images/output.txt;
-
-    for i in 1 2 3 4; do
-        echo "\n\nHidden Markov Model with n = $i\n" >> tagging/images/output.txt;
-        time python tagging/scripts/eval.py -i tagging/results/mlhmm$i.pickle -o tagging/images/mlhmm$i.png --no-progress >> tagging/images/output.txt;
-    done;
-}
-
-# Working directory (always give absolute paths)
-cd ~/Code/pln;
+# cd current/mosquitomodels/mosquitomodels;
+# cd current/mosquitomodels;
+# cd numerico/octaving;
+# cd randoms/FinalProject; workon randoms
+# cd pln; workon pln
+# cd rbfln; workon rbfln
 
