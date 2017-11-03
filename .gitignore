@@ -3,9 +3,9 @@
 
 # Except
 !.gitignore
-!Shared/
 !.zshrc
 !.spacemacs
 !.vimrc
 !.mousepad
 !.plotter.py
+!.fast-emacs
