@@ -4,8 +4,8 @@ import tkinter as tk
 from tkinter import font
 
 
-ORG_FILENAME = '/home/fran/myStuff/db.org'
-PATH = '/home/fran/myStuff'
+ORG_FILENAME = '/home/fran/bin/logger/db.org'
+PATH = '/home/fran/bin/logger'
 
 
 class InputBox(tk.Tk):
