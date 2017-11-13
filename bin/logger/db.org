@@ -1,13 +1,154 @@
 * MyStuff DB
 
 
+** Research-koller
+```
+https://www-i6.informatik.rwth-aachen.de/~koller/1miohands/
+```
+
+```
+https://www-i6.informatik.rwth-aachen.de/~koller/RWTH-PHOENIX/
+```
+
+```
+https://www-i6.informatik.rwth-aachen.de/~koller/
+```
+
+```
+https://github.com/huerlima
+```
+
+
+** Spacemacs
+```
+https://gist.github.com/robphoenix/9e4db767ab5c912fb558
+```
+
+
+** Research-corpus
+```
+http://www.bu.edu/asllrp/ncslgr-for-download/download-info.html
+```
+
+```
+http://www.bu.edu/av/asllrp/dai-asllvd.html
+```
+
+```
+http://www.bu.edu/asllrp/ncslgr.html
+```
+
+```
+http://www.lrec-conf.org/proceedings/lrec2008/pdf/748_paper.pdf
+```
+
+```
+http://www.phonetik.uni-muenchen.de/Bas/SIGNUM/
+```
+
+
+** Data visualization
+```
+https://seaborn.pydata.org/tutorial/distributions.html
+```
+
+
+** Others
+```
+https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html
+```
+
+
+** Ffmpeg
+```
+https://trac.ffmpeg.org/wiki/Capture/Desktop
+```
+
+
 ** Emacs
+```
+https://spin.atomicobject.com/2017/08/31/awesome-spacemacs-features/
+```
+
 ```
 http://ergoemacs.org/emacs/emacs_macro_example.html
 ```
 
 ```
 https://emacs.stackexchange.com/questions/13466/how-to-replace-words-in-a-region-using-iedit
+```
+
+```
+How to use emacsclient to improve startup time
+https://emacs.stackexchange.com/questions/30025/emacsclient-one-single-emacs-process-all-the-time-from-start-up-never-close
+```
+
+
+** Research-datasets
+```
+http://archive.ics.uci.edu/ml/index.php
+```
+
+```
+https://www.researchgate.net/post/Which_one_is_the_best_website_for_datasets_I_need_a_dataset_related_to_Iris_image
+```
+
+
+** Fun
+```
+http://theoatmeal.com
+```
+
+
+** Pln
+```
+http://multithreaded.stitchfix.com/blog/2017/10/18/stop-using-word2vec/
+```
+
+
+** Linux
+```
+http://ubuntuhandbook.org/index.php/2016/09/install-ffmpeg-3-1-ubuntu-16-04-ppa/
+```
+
+```
+https://superuser.com/questions/138331/using-ffmpeg-to-cut-up-video
+```
+
+```
+http://www.openshot.org/
+```
+
+```
+https://trac.ffmpeg.org/wiki/Concatenate
+```
+
+```
+https://forum.xfce.org/viewtopic.php?id=5550
+```
+
+
+** Bash
+```
+https://gist.github.com/earthgecko/3089509
+```
+
+
+** Interview
+```
+http://www.geeksforgeeks.org/amazons-asked-interview-questions/
+```
+
+
+** Data-visualization
+```
+https://python-graph-gallery.com/density-plot/
+```
+
+
+** C
+```
+https://de.slideshare.net/olvemaudal/deep-c
 ```
 
 
@@ -37,52 +178,6 @@ https://thebay.tv/torrent/9087411/AutoCAD_Architecture_2014_English_(x32)_amp_(x
 ```
 
 
-** Bash
-```
-https://gist.github.com/earthgecko/3089509
-```
-
-
-** Programming
-```
-https://de.slideshare.net/olvemaudal/deep-c
-```
-
-
-** Linux
-```
-http://ubuntuhandbook.org/index.php/2016/09/install-ffmpeg-3-1-ubuntu-16-04-ppa/
-```
-
-```
-https://superuser.com/questions/138331/using-ffmpeg-to-cut-up-video
-```
-
-```
-http://www.openshot.org/
-```
-
-```
-https://trac.ffmpeg.org/wiki/Concatenate
-```
-
-```
-https://forum.xfce.org/viewtopic.php?id=5550
-```
-
-
-** Others
-```
-https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html
-```
-
-
-** Interview
-```
-http://www.geeksforgeeks.org/amazons-asked-interview-questions/
-```
-
-
 ** Research
 ```
 http://www.sciencemag.org/careers/2016/09/how-review-paper?utm_source=sciencemagazine&utm_medium=facebook-text&utm_campaign=reviewpaper-7757
@@ -90,33 +185,5 @@ http://www.sciencemag.org/careers/2016/09/how-review-paper?utm_source=sciencemag
 
 ```
 https://www.researchgate.net/publication/319988868_Extricating_Manual_and_Non-Manual_Features_for_Subunit_Level_Medical_Sign_Modelling_in_Automatic_Sign_Language_Classification_and_Recognition
-```
-
-
-** Spacemacs
-```
-https://spin.atomicobject.com/2017/08/31/awesome-spacemacs-features/
-```
-
-```
-emacsclient
-```
-
-
-** Data visualization
-```
-https://seaborn.pydata.org/tutorial/distributions.html
-```
-
-
-** Fun
-```
-http://theoatmeal.com
-```
-
-
-** Ffmpeg
-```
-https://trac.ffmpeg.org/wiki/Capture/Desktop
 ```
 
