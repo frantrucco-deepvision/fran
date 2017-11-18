@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import font
 
 
-ORG_FILENAME = '/home/fran/bin/logger/db.org'
+MD_FILENAME = '/home/fran/bin/logger/db.md'
 PATH = '/home/fran/bin/logger'
 
 
@@ -64,7 +64,7 @@ class Table():
     def to_org_mode(self):
         answer = ''
         for category, entries in self.data.items():
-            answer += '\n** {}\n'.format(category)
+            answer += '\n## {}\n'.format(category)
             for entry in entries:
                 answer += '```\n'
                 answer += '{}'.format(entry)
@@ -77,14 +77,14 @@ class Table():
         reading_entry = False
         category = None
         for line in orgfile:
-            if line.startswith('** ') and not reading_entry:
-                category = line[len('** '):-1]
+            if line.startswith('## ') and not reading_entry:
+                category = line[len('## '):-1]
             elif line.startswith('```') and not reading_entry:
                 reading_entry = True
                 entry = ''
             elif line.startswith('```') and reading_entry:
                 reading_entry = False
-                assert category is not None, 'Bad org file'
+                assert category is not None, 'Bad markdown file'
 
                 table.add_entry(entry[:-1], category)
                 print('"{}"'.format(category))
@@ -94,13 +94,13 @@ class Table():
         return table
 
     def save(self):
-        org = '* MyStuff DB\n\n' + self.to_org_mode()
-        with open(ORG_FILENAME, 'w') as f:
+        org = '# MyStuff DB\n\n' + self.to_org_mode()
+        with open(MD_FILENAME, 'w') as f:
             f.write(org)
 
     def load():
         try:
-            with open(ORG_FILENAME, 'r') as f:
+            with open(MD_FILENAME, 'r') as f:
                 table = Table.from_org_mode(f)
         except AssertionError as error:
             raise error
