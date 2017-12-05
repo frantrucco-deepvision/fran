@@ -63,7 +63,11 @@ class Table():
 
     def to_org_mode(self):
         answer = ''
-        for category, entries in self.data.items():
+        items = self.data.items()
+        items = list(items)
+        items.sort()
+
+        for category, entries in items:
             answer += '\n## {}\n'.format(category)
             for entry in entries:
                 answer += '```\n'
@@ -87,7 +91,6 @@ class Table():
                 assert category is not None, 'Bad markdown file'
 
                 table.add_entry(entry[:-1], category)
-                print('"{}"'.format(category))
             elif reading_entry:
                 entry += line
 

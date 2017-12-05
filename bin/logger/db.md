@@ -1,31 +1,9 @@
 # MyStuff DB
 
 
-## Interview
+## Bash
 ```
-http://www.geeksforgeeks.org/amazons-asked-interview-questions/
-```
-
-
-## Ffmpeg
-```
-https://trac.ffmpeg.org/wiki/Capture/Desktop
-```
-
-
-## Research-datasets
-```
-http://archive.ics.uci.edu/ml/index.php
-```
-
-```
-https://www.researchgate.net/post/Which_one_is_the_best_website_for_datasets_I_need_a_dataset_related_to_Iris_image
-```
-
-
-## Research-blog
-```
-http://karpathy.github.io/
+https://gist.github.com/earthgecko/3089509
 ```
 
 
@@ -35,21 +13,152 @@ https://de.slideshare.net/olvemaudal/deep-c
 ```
 
 
-## Research-phd
+## Data visualization
 ```
-http://karpathy.github.io/2016/09/07/phd/
+https://seaborn.pydata.org/tutorial/distributions.html
+```
+
+```
+https://python-graph-gallery.com/density-plot/
 ```
 
 
-## Spacemacs
+## Emacs
+```
+https://spin.atomicobject.com/2017/08/31/awesome-spacemacs-features/
+```
+
+```
+http://ergoemacs.org/emacs/emacs_macro_example.html
+```
+
+```
+https://emacs.stackexchange.com/questions/13466/how-to-replace-words-in-a-region-using-iedit
+```
+
+```
+How to use emacsclient to improve startup time
+https://emacs.stackexchange.com/questions/30025/emacsclient-one-single-emacs-process-all-the-time-from-start-up-never-close
+```
+
 ```
 https://gist.github.com/robphoenix/9e4db767ab5c912fb558
 ```
 
 
-## Bash
+## Ffmpeg
 ```
-https://gist.github.com/earthgecko/3089509
+https://trac.ffmpeg.org/wiki/Capture/Desktop
+```
+
+
+## Fun
+```
+http://theoatmeal.com
+```
+
+
+## Linux
+```
+http://ubuntuhandbook.org/index.php/2016/09/install-ffmpeg-3-1-ubuntu-16-04-ppa/
+```
+
+```
+https://superuser.com/questions/138331/using-ffmpeg-to-cut-up-video
+```
+
+```
+http://www.openshot.org/
+```
+
+```
+https://trac.ffmpeg.org/wiki/Concatenate
+```
+
+```
+https://forum.xfce.org/viewtopic.php?id=5550
+```
+
+
+## Others
+```
+https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html
+```
+
+
+## Pln
+```
+http://multithreaded.stitchfix.com/blog/2017/10/18/stop-using-word2vec/
+```
+
+
+## Programming
+```
+https://github.com/norvig/pytudes
+```
+
+
+## Recetas
+```
+ Ese día, varios miembros de esa comunidad huyeron del desalojo y la represión desatada en un predio lindero al Lago Mascardi. La víctima es Rafael Nahuel, de 27 años, quien falleció antes de llegar al Hospital Ramón Carrillo, de esa ciudad, adonde fueron trasladados también dos integrantes de esa comunidad, una mujer llamada Johana Colhuan y un hombre, ambos heridos con balas de plomo.
+```
+
+```
+https://www.facebook.com/cucinareok/videos/549196822086375/?hc_ref=ARQKLFJcmUGMnKkN7b_nvr0bXGr8A2ASibkdzQkdfrrXR7gQIlwtUID_7GTl1Iqz3_k
+```
+
+
+## Research
+```
+http://www.sciencemag.org/careers/2016/09/how-review-paper?utm_source=sciencemagazine&utm_medium=facebook-text&utm_campaign=reviewpaper-7757
+```
+
+```
+https://www.researchgate.net/publication/319988868_Extricating_Manual_and_Non-Manual_Features_for_Subunit_Level_Medical_Sign_Modelling_in_Automatic_Sign_Language_Classification_and_Recognition
+```
+
+```
+http://karpathy.github.io/2016/09/07/phd/
+```
+
+```
+http://karpathy.github.io/
+```
+
+
+## Research-corpus
+```
+http://www.bu.edu/asllrp/ncslgr-for-download/download-info.html
+```
+
+```
+http://www.bu.edu/av/asllrp/dai-asllvd.html
+```
+
+```
+http://www.bu.edu/asllrp/ncslgr.html
+```
+
+```
+http://www.lrec-conf.org/proceedings/lrec2008/pdf/748_paper.pdf
+```
+
+```
+http://www.phonetik.uni-muenchen.de/Bas/SIGNUM/
+```
+
+```
+http://archive.ics.uci.edu/ml/index.php
+```
+
+```
+https://www.researchgate.net/post/Which_one_is_the_best_website_for_datasets_I_need_a_dataset_related_to_Iris_image
+```
+
+
+## Research-dataset
+```
+http://cenarec-lesco.org/DiccionarioLESCO.php?idw=1713
 ```
 
 
@@ -79,54 +188,6 @@ http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 ```
 
 
-## Research-papers
-```
-https://github.com/zjiayao/cvpr17
-```
-
-```
-http://karpathy.github.io/2016/09/07/phd/
-```
-
-
-## Pln
-```
-http://multithreaded.stitchfix.com/blog/2017/10/18/stop-using-word2vec/
-```
-
-
-## Research-corpus
-```
-http://www.bu.edu/asllrp/ncslgr-for-download/download-info.html
-```
-
-```
-http://www.bu.edu/av/asllrp/dai-asllvd.html
-```
-
-```
-http://www.bu.edu/asllrp/ncslgr.html
-```
-
-```
-http://www.lrec-conf.org/proceedings/lrec2008/pdf/748_paper.pdf
-```
-
-```
-http://www.phonetik.uni-muenchen.de/Bas/SIGNUM/
-```
-
-
-## Research
-```
-http://www.sciencemag.org/careers/2016/09/how-review-paper?utm_source=sciencemagazine&utm_medium=facebook-text&utm_campaign=reviewpaper-7757
-```
-
-```
-https://www.researchgate.net/publication/319988868_Extricating_Manual_and_Non-Manual_Features_for_Subunit_Level_Medical_Sign_Modelling_in_Automatic_Sign_Language_Classification_and_Recognition
-```
-
-
 ## Research-koller
 ```
 https://www-i6.informatik.rwth-aachen.de/~koller/1miohands/
@@ -145,46 +206,6 @@ https://github.com/huerlima
 ```
 
 
-## Data visualization
-```
-https://seaborn.pydata.org/tutorial/distributions.html
-```
-
-
-## Others
-```
-https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html
-```
-
-
-## Linux
-```
-http://ubuntuhandbook.org/index.php/2016/09/install-ffmpeg-3-1-ubuntu-16-04-ppa/
-```
-
-```
-https://superuser.com/questions/138331/using-ffmpeg-to-cut-up-video
-```
-
-```
-http://www.openshot.org/
-```
-
-```
-https://trac.ffmpeg.org/wiki/Concatenate
-```
-
-```
-https://forum.xfce.org/viewtopic.php?id=5550
-```
-
-
-## Data-visualization
-```
-https://python-graph-gallery.com/density-plot/
-```
-
-
 ## Research-theory
 ```
 http://rdipietro.github.io/friendly-intro-to-cross-entropy-loss/
@@ -192,6 +213,16 @@ http://rdipietro.github.io/friendly-intro-to-cross-entropy-loss/
 
 ```
 https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
+```
+
+
+## Research-tools
+```
+https://github.com/zjiayao/cvpr17
+```
+
+```
+www.arxiv-sanity.com
 ```
 
 
@@ -218,30 +249,5 @@ https://thebay.tv/torrent/12935450/Autodesk_AutoCAD_2016_SP1_(x64_X86)_Incl.Keyg
 
 ```
 https://thebay.tv/torrent/9087411/AutoCAD_Architecture_2014_English_(x32)_amp_(x64)Bit_DeLtASn1p3r
-```
-
-
-## Emacs
-```
-https://spin.atomicobject.com/2017/08/31/awesome-spacemacs-features/
-```
-
-```
-http://ergoemacs.org/emacs/emacs_macro_example.html
-```
-
-```
-https://emacs.stackexchange.com/questions/13466/how-to-replace-words-in-a-region-using-iedit
-```
-
-```
-How to use emacsclient to improve startup time
-https://emacs.stackexchange.com/questions/30025/emacsclient-one-single-emacs-process-all-the-time-from-start-up-never-close
-```
-
-
-## Fun
-```
-http://theoatmeal.com
 ```
 
