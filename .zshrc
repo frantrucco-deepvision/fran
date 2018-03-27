@@ -201,3 +201,4 @@ alias vim='emacsclient -c -t'
 # cd pln; workon pln
 # cd rbfln; workon rbfln
 
+export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"

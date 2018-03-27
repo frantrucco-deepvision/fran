@@ -58,6 +58,12 @@ http://theoatmeal.com
 ```
 
 
+## Gender
+```
+https://www.henrikkleven.com/uploads/3/7/3/1/37310663/kleven-landais-sogaard_nber-w24219_jan2018.pdf
+```
+
+
 ## Linux
 ```
 http://ubuntuhandbook.org/index.php/2016/09/install-ffmpeg-3-1-ubuntu-16-04-ppa/
@@ -98,6 +104,18 @@ https://github.com/norvig/pytudes
 ```
 
 
+## Ranger
+```
+https://www.digitalocean.com/community/tutorials/installing-and-using-ranger-a-terminal-file-manager-on-a-ubuntu-vps
+```
+
+
+## Recepies
+```
+https://www.facebook.com/buzzfeedtasty/videos/2230668827185754/?hc_ref=ARQtBlBDLCELqKgTO_-lwrqU9SHvg-SgmQTS8ULI8d8LSsIPM1RimcX2VEHaVQHdL14
+```
+
+
 ## Recetas
 ```
  Ese día, varios miembros de esa comunidad huyeron del desalojo y la represión desatada en un predio lindero al Lago Mascardi. La víctima es Rafael Nahuel, de 27 años, quien falleció antes de llegar al Hospital Ramón Carrillo, de esa ciudad, adonde fueron trasladados también dos integrantes de esa comunidad, una mujer llamada Johana Colhuan y un hombre, ambos heridos con balas de plomo.
@@ -105,6 +123,10 @@ https://github.com/norvig/pytudes
 
 ```
 https://www.facebook.com/cucinareok/videos/549196822086375/?hc_ref=ARQKLFJcmUGMnKkN7b_nvr0bXGr8A2ASibkdzQkdfrrXR7gQIlwtUID_7GTl1Iqz3_k
+```
+
+```
+https://www.facebook.com/buzzfeedtasty/videos/1783991115186863/?hc_ref=ARSfM-VERSbTV2dIuMCkqwNQJY7Ch4MHFY99w_ybN8_P59Rw-79Fmygb_qGsRcHA6k0
 ```
 
 
@@ -223,6 +245,12 @@ https://github.com/zjiayao/cvpr17
 
 ```
 www.arxiv-sanity.com
+```
+
+
+## Teachingcomputerscience
+```
+https://www.youtube.com/watch?v=xnyFYiK2rSY&list=PLzdnOPI1iJNcsRwJhvksEo1tJqjIqWbN-&index=6
 ```
 
 
