@@ -80,6 +80,7 @@
   (setq whitespace-style '(face tabs empty trailing lines-tail)))
 
 ;;---------------------------Installed Packages---------------------------------
+;;----------------------------General Packages----------------------------------
 
 (use-package avy
   :ensure t
@@ -211,8 +212,34 @@
   (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
   (global-set-key (kbd "C-x C-f") #'helm-find-files))
 
+(use-package neotree
+  :ensure t
+  :config
+  (setq neo-smart-open t)
+  (global-set-key (kbd "C-c C-n") #'neotree-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
+  (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
+  (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
+  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle))
+
 (use-package atom-one-dark-theme
   :ensure t)
 
+;;---------------------------Installed Packages---------------------------------
+;;-----------------------Language Specific Packages-----------------------------
+
+;; Proof general. In order to install it (if not installed) issue the
+;; following command:
+;; git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
+;; cd ~/.emacs.d/lisp/PG; make
+;;
+;; or run the install_all.sh script:
+;; ~/.emacs.d/install_all.sh
+
+(load "~/.emacs.d/lisp/PG/generic/proof-site")
 
 ;;; packages.el ends here
