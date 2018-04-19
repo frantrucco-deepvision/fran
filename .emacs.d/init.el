@@ -23,6 +23,20 @@
 (load-user-file "common_customizations.el")
 (load-user-file "packages.el")
 (load-user-file "bindings.el")
-(load-user-file "aesthetics.el")
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(package-selected-packages
+   (quote
+    (evil-magit magit-evil magit zop-to-char yaml-mode which-key volatile-highlights use-package super-save rainbow-mode rainbow-delimiters projectile powerline-evil move-text markdown-mode inf-ruby imenu-anywhere helm flycheck expand-region exec-path-from-shell evil-leader erlang elixir-mode easy-kill diff-hl crux counsel company cider cask-mode avy atom-one-dark-theme atom-dark-theme anzu))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
