@@ -192,7 +192,8 @@ alias gs='gst'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-alias vim='emacsclient -c -t'
+alias vim='emacs25'
+alias emacs='emacs25'
 
 # cd current/mosquitomodels/mosquitomodels;
 # cd current/mosquitomodels;
