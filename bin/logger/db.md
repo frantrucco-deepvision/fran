@@ -64,6 +64,12 @@ https://www.henrikkleven.com/uploads/3/7/3/1/37310663/kleven-landais-sogaard_nbe
 ```
 
 
+## Hott
+```
+https://www.youtube.com/watch?v=ZKmodCApZwk&list=PL8Ky8lYL8-Oh7awp0sqa82o7Ggt4AGhyf
+```
+
+
 ## Linux
 ```
 http://ubuntuhandbook.org/index.php/2016/09/install-ffmpeg-3-1-ubuntu-16-04-ppa/
@@ -83,6 +89,12 @@ https://trac.ffmpeg.org/wiki/Concatenate
 
 ```
 https://forum.xfce.org/viewtopic.php?id=5550
+```
+
+
+## Org-mode
+```
+https://orgmode.org/worg/org-tutorials/org-spr
 ```
 
 
