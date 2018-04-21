@@ -77,7 +77,7 @@
   (add-hook 'before-save-hook #'whitespace-cleanup)
   :config
   (setq whitespace-line-column 80) ;; limit line length
-  (setq whitespace-style '(face tabs empty trailing lines-tail)))
+  (setq whitespace-style '(face tabs trailing lines-tail)))
 
 ;;---------------------------Installed Packages---------------------------------
 ;;----------------------------General Packages----------------------------------
@@ -197,17 +197,7 @@
   (put 'dired-find-alternate-file 'disabled nil)
   (helm-mode 1)
   (define-key evil-normal-state-map (kbd "<SPC> <SPC>") #'helm-M-x)
-  (global-set-key (kbd "M-x") #'helm-M-x)
-  (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
-  (global-set-key (kbd "C-x C-f") #'helm-find-files))
-
-(use-package helm
-  :ensure t
-  :config
-  (require 'helm-config)
-  (put 'dired-find-alternate-file 'disabled nil)
-  (helm-mode 1)
-  (define-key evil-normal-state-map (kbd "<SPC> <SPC>") #'helm-M-x)
+  (define-key evil-visual-state-map (kbd "<SPC> <SPC>") #'helm-M-x)
   (global-set-key (kbd "M-x") #'helm-M-x)
   (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
   (global-set-key (kbd "C-x C-f") #'helm-find-files))
@@ -227,7 +217,7 @@
   (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle))
 
 (use-package atom-one-dark-theme
-  :ensure t)
+   :ensure t)
 
 ;;---------------------------Installed Packages---------------------------------
 ;;-----------------------Language Specific Packages-----------------------------
