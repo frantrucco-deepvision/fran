@@ -230,6 +230,8 @@
 
 (use-package ranger
   :ensure t
+  :config
+  (global-set-key (kbd "C-x d") #'ranger)
   )
 
 (use-package atom-one-dark-theme
