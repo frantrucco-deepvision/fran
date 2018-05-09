@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-;; replace buffer-menu with ibuffer
-(define-key evil-normal-state-map (kbd "<SPC> b") #'switch-to-buffer)
+(define-key evil-normal-state-map (kbd "<SPC> b b") #'switch-to-next-buffer)
+(define-key evil-normal-state-map (kbd "<SPC> b d") #'kill-this-buffer)
 
 ;;; bindings.el ends here

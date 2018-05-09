@@ -82,6 +82,12 @@
 ;;---------------------------Installed Packages---------------------------------
 ;;----------------------------General Packages----------------------------------
 
+(require 'evil)
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode t))
+
 (use-package avy
   :ensure t
   :bind (("s-." . avy-goto-word-or-subword-1)
@@ -93,7 +99,11 @@
   :ensure t)
 
 (use-package evil-magit
-  :ensure t)
+  :ensure t
+  :config
+  (define-key evil-normal-state-map (kbd "<SPC> g s") #'magit-status)
+  (define-key evil-visual-state-map (kbd "<SPC> g s") #'magit-status)
+  )
 
 (use-package projectile
   :ensure t
@@ -176,12 +186,6 @@
         `((".*" . ,temporary-file-directory)))
   (setq undo-tree-auto-save-history t))
 
-(require 'evil)
-(use-package evil
-  :ensure t
-  :config
-  (evil-mode t))
-
 (require 'evil-leader)
 (use-package evil-leader
   :ensure t
@@ -206,15 +210,29 @@
   :ensure t
   :config
   (setq neo-smart-open t)
-  (global-set-key (kbd "C-c C-n") #'neotree-toggle)
+  (define-key evil-normal-state-map (kbd "<SPC> f t") #'neotree-toggle)
+  (define-key evil-visual-state-map (kbd "<SPC> f t") #'neotree-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
   (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
   (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
   (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
   (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle))
+
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1)
+  (define-key evil-visual-state-map (kbd "s") #'evil-surround-region)
+  )
+
+(use-package evil-mc
+  :ensure t
+  :config
+  (global-evil-mc-mode  1) ;; enable
+  )
 
 (use-package atom-one-dark-theme
    :ensure t)
