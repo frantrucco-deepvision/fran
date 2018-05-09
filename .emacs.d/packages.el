@@ -274,6 +274,10 @@
   (global-evil-mc-mode  1) ;; enable
   )
 
+(use-package ranger
+  :ensure t
+  )
+
 (use-package atom-one-dark-theme
    :ensure t)
 
