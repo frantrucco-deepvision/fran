@@ -8,5 +8,6 @@
 
 (define-key evil-normal-state-map (kbd "<SPC> b b") #'switch-to-buffer)
 (define-key evil-normal-state-map (kbd "<SPC> b d") #'kill-this-buffer)
+(define-key evil-normal-state-map (kbd "<SPC> e") #'eval-last-sexp)
 
 ;;; bindings.el ends here
