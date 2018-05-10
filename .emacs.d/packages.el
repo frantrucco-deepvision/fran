@@ -234,6 +234,18 @@
   (global-set-key (kbd "C-x d") #'ranger)
   )
 
+(use-package smartparens
+  :ensure t
+  :config
+  (smartparens-mode 1)
+  )
+
+(use-package evil-smartparens
+  :ensure t
+  :config
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+  )
+
 (use-package klere-theme
    :ensure t)
 
