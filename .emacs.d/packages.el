@@ -234,7 +234,7 @@
   (global-set-key (kbd "C-x d") #'ranger)
   )
 
-(use-package atom-one-dark-theme
+(use-package klere-theme
    :ensure t)
 
 ;;---------------------------Installed Packages---------------------------------
