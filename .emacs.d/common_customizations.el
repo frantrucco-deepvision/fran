@@ -35,4 +35,8 @@
 (custom-set-variables
   '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
+;; Split vertically
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+
 ;;; common_customizations ends here
