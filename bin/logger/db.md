@@ -116,6 +116,12 @@ https://github.com/norvig/pytudes
 ```
 
 
+## Proof general
+```
+https://proofgeneral.github.io/doc/userman/ProofGeneral_12/#Coq_002dspecific-commands
+```
+
+
 ## Ranger
 ```
 https://www.digitalocean.com/community/tutorials/installing-and-using-ranger-a-terminal-file-manager-on-a-ubuntu-vps
