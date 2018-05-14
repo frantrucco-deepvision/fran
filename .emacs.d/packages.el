@@ -79,14 +79,21 @@
   (setq whitespace-line-column 80) ;; limit line length
   (setq whitespace-style '(face tabs trailing lines-tail)))
 
+
+
 ;;---------------------------Installed Packages---------------------------------
 ;;----------------------------General Packages----------------------------------
+
+;; This work-around prevents evil mode from auto-completing
+;; after pressing <ESC>
+(setq evil-want-abbrev-expand-on-insert-exit nil)
 
 (require 'evil)
 (use-package evil
   :ensure t
   :config
-  (evil-mode t))
+  (evil-mode t)
+  )
 
 (use-package avy
   :ensure t
@@ -149,6 +156,10 @@
 
 (use-package org
   :ensure t)
+
+(use-package evil-org
+  :ensure t
+  )
 
 (use-package company
   :ensure t
@@ -231,7 +242,10 @@
 (use-package ranger
   :ensure t
   :config
-  (global-set-key (kbd "C-x d") #'ranger)
+  (global-set-key (kbd "C-x d")
+                  '(lambda ()
+                     "Hide neotree before opening ranger"
+                     (interactive) (neotree-hide) (ranger)))
   )
 
 (use-package smartparens
@@ -246,11 +260,37 @@
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
   )
 
-(use-package klere-theme
-   :ensure t)
+(use-package eyebrowse
+  :ensure t
+  :config
+  (defun eyebrowse-goto-configuration-workspace ()
+  "Switch to workspace 0, open package configuration file and go to last line."
+    (interactive)
+    (eyebrowse-switch-to-window-config-0)
+    (find-file "~/.emacs.d/packages.el")
+    (evil-goto-line))
+  (progn
+    (define-key eyebrowse-mode-map (kbd "M-0")
+      'eyebrowse-goto-configuration-workspace)
 
-;;---------------------------Installed Packages---------------------------------
-;;-----------------------Language Specific Packages-----------------------------
+    (define-key eyebrowse-mode-map (kbd "M-1")
+      'eyebrowse-switch-to-window-config-1)
+
+    (define-key eyebrowse-mode-map (kbd "M-2")
+      'eyebrowse-switch-to-window-config-2)
+
+    (define-key eyebrowse-mode-map (kbd "M-3")
+      'eyebrowse-switch-to-window-config-3)
+
+    (define-key eyebrowse-mode-map (kbd "M-4")
+      'eyebrowse-switch-to-window-config-4)
+
+    (define-key eyebrowse-mode-map (kbd "M-5")
+      'eyebrowse-switch-to-window-config-5)
+
+    (eyebrowse-mode t)
+    (setq eyebrowse-new-workspace t))
+  )
 
 ;; Proof general. In order to install it (if not installed) issue the
 ;; following command:
@@ -261,5 +301,20 @@
 ;; ~/.emacs.d/install_all.sh
 
 (load "~/.emacs.d/lisp/PG/generic/proof-site")
+
+(use-package spacemacs-theme
+  :ensure t
+  :defer t
+  :init
+  (load-theme 'spacemacs-dark t))
+
+(use-package spaceline
+  :ensure t
+  :demand t
+  :init
+  (setq powerline-default-separator 'arrow-fade)
+  :config
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme))
 
 ;;; packages.el ends here
