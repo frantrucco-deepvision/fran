@@ -316,6 +316,8 @@
   (setq powerline-default-separator 'arrow-fade)
   :config
   (require 'spaceline-config)
-  (spaceline-spacemacs-theme))
+  (spaceline-spacemacs-theme)
+  (setq spaceline-buffer-size-p nil)
+  (setq spaceline-minor-modes-p nil))
 
 ;;; packages.el ends here
