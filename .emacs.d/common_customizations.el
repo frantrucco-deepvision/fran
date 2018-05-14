@@ -39,4 +39,30 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 
+;; Turn touchpad off when using emacs
+;; This depends on ~/bin/touchpad_id.sh to work properly
+
+(defconst XINPUT-TOUCHPAD-ID (shell-command-to-string "~/bin/touchpad_id.sh"))
+(defconst XINPUT-DISABLE-TOUCHPAD (concat "xinput --disable " XINPUT-TOUCHPAD-ID))
+(defconst XINPUT-ENABLE-TOUCHPAD  (concat "xinput --enable " XINPUT-TOUCHPAD-ID))
+(defconst SYNCLIENT-DISABLE-TOUCHPAD "synclient TouchpadOff=1")
+(defconst SYNCLIENT-ENABLE-TOUCHPAD  "synclient TouchpadOff=0")
+
+(defconst DISABLE-TOUCHPAD XINPUT-DISABLE-TOUCHPAD)
+(defconst ENABLE-TOUCHPAD  XINPUT-ENABLE-TOUCHPAD)
+
+(defun touchpad-off (&optional frame)
+  (interactive)
+  (shell-command DISABLE-TOUCHPAD))
+
+(defun touchpad-on (&optional frame)
+  (interactive)
+  (shell-command ENABLE-TOUCHPAD))
+
+(add-hook 'focus-in-hook #'touchpad-off)
+(add-hook 'focus-out-hook #'touchpad-on)
+(add-hook 'delete-frame-functions #'touchpad-on)
+(add-hook 'kill-emacs-hook #'touchpad-on)
+
+
 ;;; common_customizations ends here
