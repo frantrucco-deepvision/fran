@@ -268,7 +268,8 @@
     (interactive)
     (eyebrowse-switch-to-window-config-0)
     (find-file "~/.emacs.d/packages.el")
-    (evil-goto-line))
+    (evil-goto-line)
+    (evil-previous-line 2))
   (progn
     (define-key eyebrowse-mode-map (kbd "M-0")
       'eyebrowse-goto-configuration-workspace)
