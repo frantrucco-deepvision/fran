@@ -40,7 +40,7 @@
 (setq split-width-threshold 0)
 
 ;; Turn touchpad off when using emacs
-;; This depends on ~/bin/touchpad_id.sh to work properly
+;; This depends on ~/bin/touchpad_id.sh in order to work properly
 
 (defconst XINPUT-TOUCHPAD-ID (shell-command-to-string "~/bin/touchpad_id.sh"))
 (defconst XINPUT-DISABLE-TOUCHPAD (concat "xinput --disable " XINPUT-TOUCHPAD-ID))
