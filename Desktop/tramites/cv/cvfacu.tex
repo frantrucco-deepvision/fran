@@ -1,0 +1,296 @@
+\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px                    % Saving trees ;-)
+\usepackage{url}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{1pt}}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\par \normalsize \normalfont}
+
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}			   % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
+\newcommand{\EducationEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		\colorbox{White}{%
+			\parbox{5cm}{%
+			\hfill\color{Black}#2}} \par  % Duration
+		\noindent \textit{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
+		\noindent \textbf{#1} \hfill      % Jobname
+		\noindent\colorbox{Black}{\color{White}#2} \par  % Duration
+		\noindent \textit{#3} \par              % Company
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+%you can upload a photo and include it here...
+%begin{wrapfigure}{l}{0.5\textwidth}
+%vspace*{-2em}
+%\includegraphics[width=0.15\textwidth]{gracias_nestor}
+%end{wrapfigure}
+
+\MyName{Francisco Carlos Trucco}
+%%\MySlogan{Licenciatura en Ciencias de la Computación}
+
+\sepspace
+
+%%% Personal details
+%%% ------------------------------------------------------------
+\NewPart{Datos personales}{}
+
+\PersonalEntry{Nacimiento}{27 de febrero, 1995}
+\PersonalEntry{Domicilio}{Santa Rosa 2004, Alto Alberdi. Córdoba.}
+\PersonalEntry{Teléfono}{(+54) 0351-153-607-668}
+\PersonalEntry{E--Mail}{franciscoctrucco@gmail.com}
+\PersonalEntry{DNI}{38.648.258}
+
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Educación}{}
+
+\EducationEntry{Analista en Computación}{2014-2017}{Facultad de Matemática Astronomía, Física y Computación - Universidad Nacional de Córdoba}{
+\begin{itemize}
+  \item{Promedio General: }{}{9.84 (con y sin aplazos)}
+\end{itemize}
+}
+
+\EducationEntry{Licenciatura en Ciencias de la Computación}{2014-actualidad}{Facultad de Matemática Astronomía, Física y Computación - Universidad Nacional de Córdoba}{
+\begin{itemize}
+
+\item{Asignaturas aprobadas:\\
+– Álgebra (2015) \\
+– Algoritmos y Estructuras de Datos I (2014) \\
+– Algoritmos y Estructuras de Datos II (2015) \\
+– Análisis Matematico I (2014) \\
+– Análisis Matematico II (2014) \\
+– Análisis Numérico (2017) \\
+– Arquitectura del Computador (2016) \\
+– Bases de Datos (2016) \\
+– Ingeniería del Software I (2017) \\
+– Introducción a la Lógica (2015) \\
+– Introducción a los Algoritmos (2014) \\
+– Matemática Discreta I (2014) \\
+– Matemática Discreta II (2017) \\
+– Organización del Computador (2015) \\
+– Paradigmas de la Programación (2016) \\
+– Probabilidad y Estadística (2016) \\
+– Redes y sistemas Distribuídos (2017) \\
+– Sistemas Operativos (2015) \\
+– Análisis estadístico de imágenes satelitales (2016) \\
+– Lógica (2018) \\
+– Modelos y Simulación (2017) \\
+%% – Lenguajes y Compiladores (2018) \\
+%% – Física (2018) \\
+%% – Ingeniería del Software II (2018) \\
+%% – Lenguajes Formales y Computabilidad (2018) \\
+%% – Procesamiento de Lenguaje Natural (2018) \\
+}
+\item{Promedio General: }{}{9.86 (con y sin aplazos)}
+\end{itemize}
+}
+
+
+\newpage
+
+\sepspace
+
+\EducationEntry{Participación en competencias, cursos y congresos}{}{}{
+\begin{itemize}
+
+\item{Escuela de Ciencias Informáticas\\}{Organizada por Departamento de Computación de la Facultad de Ciencias Exactas y Naturales, UBA. Julio de 2016}
+
+\item{Primera Escuela de Primavera del Capítulo Argentino de la IEEE-GRSS. Duración: 36hs. \\}{Organizada por el Instituto de Altos Estudios Espaciales "Mario Gulich" (CONAE/UNC), la IEEE - Geoscience and Remote Sensing Society, la CONAE y FaMAF. Septiembre 2016}
+
+\item{Training Camp Argentina 2015 para ACM-ICPC}{\\Organizado por el Departamento de Ciencias e Ingeniería de la Computación de la Universidad Nacional del Sur}
+
+\item{ACM International Collegiate Programming Contest, Torneo Argentino de Programación 2014, participante.}{}
+
+\item{ACM International Collegiate Programming Contest, Torneo Argentino de Programación 2015, participante. Clasifica para el South America/South Regional Contest 2015}{}
+
+\item{ACM International Collegiate Programming Contest, South America/South Regional Contest 2015, participante.}{}
+
+\item{ACM International Collegiate Programming Contest, Torneo Argentino de Programación 2016, participante. Clasifica para el South America/South Regional Contest 2016.}{}
+
+\item{ACM International Collegiate Programming Contest, South America/South Regional Contest 2016, participante.}{}
+
+\item{ACM International Collegiate Programming Contest, Torneo Argentino de Programación 2017, participante.}{}
+
+\item{III Congreso Nacional de Estudiantes de Ciencias Exactas (CoNECEX)}{ (2016)}
+
+\item{III Jornada de Computación (2016). Facultad de Matemática, Astronomía, Física y Computación.}{ (2016)}
+
+\end{itemize}
+}
+
+
+%%% Work experience
+%%% ------------------------------------------------------------
+\NewPart{Publicaciones}{}
+
+\SkillsEntry{\underline{Congresos}}{
+\begin{itemize}
+
+\item{Modelando el patrón temporal del vector de dengue, Chikungunya y Zika a partir de información satelital con redes neuronales. \\ Juan M. Scavuzzo, Francisco C. Trucco, Carolina Tauro, Alba German, Manuel Espinosa, Marcelo Abril.\\ RPIC IEEE (2017)}
+
+\end{itemize}
+}
+
+\SkillsEntry{\underline{Revistas}}{
+\begin{itemize}
+
+\item{Modeling Dengue Vector Population Using Remotely Sensed Data and Machine Learning \\ J. M. Scavuzzo, F. Trucco, M. Espinosa, C. B. Tauro, M. Abril, C. M. Scavuzzo, A. C. Frery.\\ Aceptado para publicación en Acta Tropica (2018)}
+
+\end{itemize}
+}
+
+
+\NewPart{\\ Experiencia laboral}{}
+
+\begin{itemize}
+
+    \item{Ayudante Alumno en la carrera de Ciencias de la Computación en la Facultad de Matemática, Astronomía, Física y Computación, Universidad Nacional de Córdoba.}{\\ Período: Marzo 2017 - Febrero 2017}{}
+
+    \item{Ayudante Alumno del cursillo de ingreso en la Facultad de Matemática, Astronomía, Física y Computación, Universidad Nacional de Córdoba.}{\\ Período: Enero 2017 - Febrero 2017}{}
+
+    \item{Ayudante Alumno en la carrera de Ciencias de la Computación en la Facultad de Matemática, Astronomía, Física y Computación, Universidad Nacional de Córdoba.}{\\ Período: Marzo 2018 - Actualidad}{}
+
+\end{itemize}
+
+%%% Skills
+%%% ------------------------------------------------------------
+\NewPart{Idiomas}{}
+
+\SkillsEntry{\underline{Español}}{\\Nativo\\}
+
+\SkillsEntry{\underline{Inglés}}{\\Avanzado\\}
+
+\SkillsEntry{\underline{Francés}}{\\Elemental\\}
+
+\SkillsEntry{\underline{Alemán}}{\\Elemental\\}
+
+%% \NewPart{Manejo de Software}{}
+
+%% \SkillsEntry{\underline{Lenguajes}}{\\C, C++, Python, Haskell, LaTeX, PHP, SQL, Ocaml, VHDL, HTML, Javascript, Ruby\\}
+%% \SkillsEntry{\underline{Frameworks}}{\\ Django, Rails, OpenCL \\}
+%% \SkillsEntry{\underline{Tecnologías}}{\\ ENVY, Make, Emacs, Vim \\}
+%% \SkillsEntry{\underline{Sistemas Operativos}}{\\ Linux/GNU, Windows, Android \\}
+
+\newpage
+
+\NewPart{Otros Antecedentes}{}
+
+
+\SkillsEntry{\underline{Distinciones y Becas}}
+{
+\begin{itemize}
+
+\item{Beca provincial a la excelencia académica 1000x1500}{ \\ Período: 2014 - actualidad}
+
+\item{Beca de Ayudantía de Extensión para el Instituto Técnico Superior Córdoba - Extensión Aulica Villa El Libertador}{ \\ Período: Abril del 2017 a Diciembre del 2017}
+
+\item{Beca de Ayudantía de Extensión para la muestra Leonardo Da Vinci Máquinas en Acción - Museo de Ciencias Naturales de la Provincia de Córdoba}{ \\ Fecha: Octubre del 2017}
+
+\end{itemize}
+}{}
+
+
+\SkillsEntry{\underline{Actividades de Gestión}} {
+\begin{itemize}
+
+\item{Gestión Universitaria}{
+\begin{itemize}
+
+\item{Consejero por el claustro estudiantil en el Consejo Directivo de la Facultad de Matemática, Astronomía, Física y Computación, Universidad Nacional de Córdoba. \\}{Período: Junio del 2016 - Junio del 2017.}{}
+
+\item{Representante estudiantil en la Comisión Asesora de Computación de la Facultad de Matemática, Astronomía, Física y Computación, Universidad Nacional de Córdoba. \\}{Período: Septiembre del 2016 - Septiembre del 2017.}{}
+
+\item{Representante estudiantil en el Consejo de Grado de la Facultad de Matemática, Astronomía, Física y Computación, Universidad Nacional de Córdoba. \\}{Período: Octubre del 2017 - Septiembre del 2018.}{}
+
+\end{itemize}
+}
+
+\item{Organización de Congresos, Cursos y Conferencias}{
+\begin{itemize}
+
+\item{III Congreso Nacional de Estudiantes de Ciencias Exactas (CoNECEX)}{ (2016)}
+
+\item{III Jornada de Computación (2016). Facultad de Matemática, Astronomía, Física y Computación.}{(2016)}
+
+\end{itemize}
+}
+
+\end{itemize}
+}
+
+\SkillsEntry{\underline{Otras Actividades}}
+{
+\begin{itemize}
+
+\item{Colaborador en la Jornada de Puertas Abiertas de Facultad de Matemática, Astronomía, Física y Computación de la Universidad Nacional De Córdoba.}{\\Año: 2015.}{}
+
+
+\end{itemize}
+}
+
+%\SkillsEntry{}{}
+
+%% \NewPart{Referencias}{}
+
+%% \begin{itemize}
+
+%% \item{Raúl Fervari}{ - Doctor en Ciencias de la Computación. Facultad de Matemática, Astronomía, Física, Universidad Nacional de Córdoba - Investigador Asistente en CONICET}
+
+%% \item{Laura Alonso}{ - Doctor en Ciencias de la Computación. Facultad de Matemática, Astronomía, Física, Universidad Nacional de Córdoba - Investigador Asistente en CONICET}
+
+%% \end{itemize}
+
+%%% References
+%%% ------------------------------------------------------------
+%\NewPart{References}{}
+%Available upon request
+\end{document}
