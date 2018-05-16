@@ -154,11 +154,29 @@
   :ensure t)
 
 (use-package org
-  :ensure t)
-
-(use-package evil-org
   :ensure t
+  :config
+  (setq org-src-fontify-natively t) ;; Highlight code blocks in org-mode
+  (setq org-link-frame-setup
+        (quote ((vm . vm-visit-folder-other-frame)
+                (vm-imap . vm-visit-imap-folder-other-frame)
+                (gnus . org-gnus-no-new-news)
+                (file . find-file) ;; Open file in the same frame and window :)
+                (wl . wl-other-frame))))
+  (setq org-log-done 'time)
+  (setq org-todo-keywords
+    '((sequence "TODO" "DOING" "DONE")))
+  (setq org-agenda-span 30)  ;; look 30 days into the future
+  (setq org-agenda-start-on-weekday nil)  ;; Start agenda view from today
+  (define-key global-map (kbd "C-c a") 'org-agenda)
   )
+
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  )
+
 
 (use-package company
   :ensure t
