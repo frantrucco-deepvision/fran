@@ -310,6 +310,9 @@
     (setq eyebrowse-new-workspace t))
   )
 
+(use-package haskell-mode
+  :ensure t)
+
 ;; Proof general. In order to install it (if not installed) issue the
 ;; following command:
 ;; git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
