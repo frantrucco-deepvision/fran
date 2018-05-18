@@ -7,6 +7,12 @@ https://gist.github.com/earthgecko/3089509
 ```
 
 
+## Bibtex search
+```
+https://github.com/atisharma/searchtobibtex
+```
+
+
 ## C
 ```
 https://de.slideshare.net/olvemaudal/deep-c
