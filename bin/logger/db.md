@@ -134,7 +134,7 @@ https://www.digitalocean.com/community/tutorials/installing-and-using-ranger-a-t
 ```
 
 
-## Recepies
+## Recipes
 ```
 https://www.facebook.com/buzzfeedtasty/videos/2230668827185754/?hc_ref=ARQtBlBDLCELqKgTO_-lwrqU9SHvg-SgmQTS8ULI8d8LSsIPM1RimcX2VEHaVQHdL14
 ```
