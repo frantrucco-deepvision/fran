@@ -192,14 +192,6 @@ alias gs='gst'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-alias vim='emacs25'
 alias emacs='emacs25'
-
-# cd current/mosquitomodels/mosquitomodels;
-# cd current/mosquitomodels;
-# cd numerico/octaving;
-# cd randoms/FinalProject; workon randoms
-# cd pln; workon pln
-# cd rbfln; workon rbfln
 
 export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
