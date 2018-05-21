@@ -6,6 +6,9 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
+
 ;; keep the installed packages in .emacs.d
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (package-initialize)
@@ -67,6 +70,38 @@
 
 #+END_SRC
 
+** Evil and Evil Leader
+#+BEGIN_SRC emacs-lisp
+
+;; This work-around prevents evil mode from auto-completing
+;; after pressing <ESC>
+(setq evil-want-abbrev-expand-on-insert-exit nil)
+
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode t))
+
+(use-package evil-leader
+  :ensure t
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>"))
+
+#+END_SRC
+
+** Magit
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package magit
+  :ensure t)
+
+(use-package evil-magit
+  :ensure t)
+
+#+END_SRC
+
 ** TouchPadOff in emacs!
 
 #+BEGIN_SRC emacs-lisp
@@ -95,6 +130,84 @@
 (add-hook 'focus-out-hook #'touchpad-on)
 (add-hook 'delete-frame-functions #'touchpad-on)
 (add-hook 'kill-emacs-hook #'touchpad-on)
+
+#+END_SRC
+
+** Installed Packages
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode +1))
+
+(use-package helm
+  :ensure t
+  :config
+  (require 'helm-config)
+  (put 'dired-find-alternate-file 'disabled nil)
+  (helm-mode 1)
+  (global-set-key (kbd "M-x") #'helm-M-x)
+  (global-set-key (kbd "C-x C-f") #'helm-find-files))
+
+(use-package eyebrowse
+  :ensure t
+  :config
+  (defun eyebrowse-goto-configuration-workspace ()
+  "Switch to workspace 0, open package configuration file."
+    (interactive)
+    (eyebrowse-switch-to-window-config-0)
+    (find-file "~/.emacs.d/configuration.org"))
+  (progn
+    (define-key eyebrowse-mode-map (kbd "M-0")
+      'eyebrowse-goto-configuration-workspace)
+
+    (define-key eyebrowse-mode-map (kbd "M-1")
+      'eyebrowse-switch-to-window-config-1)
+
+    (define-key eyebrowse-mode-map (kbd "M-2")
+      'eyebrowse-switch-to-window-config-2)
+
+    (define-key eyebrowse-mode-map (kbd "M-3")
+      'eyebrowse-switch-to-window-config-3)
+
+    (define-key eyebrowse-mode-map (kbd "M-4")
+      'eyebrowse-switch-to-window-config-4)
+
+    (define-key eyebrowse-mode-map (kbd "M-5")
+      'eyebrowse-switch-to-window-config-5)
+
+    (eyebrowse-mode t)
+    (setq eyebrowse-new-workspace t)))
+
+
+#+END_SRC
+
+** File Managers
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package neotree
+  :ensure t
+  :config
+  (setq neo-smart-open t)
+  (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
+  (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
+  (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
+  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle))
+
+(use-package ranger
+  :ensure t
+  :config
+  (global-set-key (kbd "C-x d")
+                  '(lambda ()
+                     "Hide neotree before opening ranger"
+                     (interactive) (neotree-hide) (ranger))))
 
 #+END_SRC
 
@@ -189,6 +302,25 @@
 
 #+END_SRC
 
+** Installed Packages
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package super-save
+  :ensure t
+  :config
+  (super-save-mode +1))
+
+(use-package undo-tree
+  :ensure t
+  :config
+  ;; autosave the undo-tree history
+  (setq undo-tree-history-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq undo-tree-auto-save-history t))
+
+#+END_SRC
+
 * Better Editing
 ** Indentation, tabs, spaces, newlines, etc.
 #+BEGIN_SRC emacs-lisp
@@ -237,59 +369,7 @@
 
 #+END_SRC
 
-* Installed Packages
-** Evil and Evil Leader
-#+BEGIN_SRC emacs-lisp
-
-;; This work-around prevents evil mode from auto-completing
-;; after pressing <ESC>
-(setq evil-want-abbrev-expand-on-insert-exit nil)
-
-(use-package evil
-  :ensure t
-  :config
-  (evil-mode t))
-
-(use-package evil-leader
-  :ensure t
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>"))
-
-#+END_SRC
-
-** Magit
-
-#+BEGIN_SRC emacs-lisp
-
-(use-package magit
-  :ensure t)
-
-(use-package evil-magit
-  :ensure t)
-
-#+END_SRC
-
-** Better Defaults
-
-#+BEGIN_SRC emacs-lisp
-
-(use-package super-save
-  :ensure t
-  :config
-  (super-save-mode +1))
-
-(use-package undo-tree
-  :ensure t
-  :config
-  ;; autosave the undo-tree history
-  (setq undo-tree-history-directory-alist
-        `((".*" . ,temporary-file-directory)))
-  (setq undo-tree-auto-save-history t))
-
-#+END_SRC
-
-** Better Editing
+** Installed Packages
 
 #+BEGIN_SRC emacs-lisp
 
@@ -307,101 +387,26 @@
 (use-package smartparens
   :ensure t
   :config
-  (smartparens-mode +1))
+  (smartparens-mode 1))
 
 (use-package flycheck
   :ensure t
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
-#+END_SRC
-
-** Better Interfacing
-
-#+BEGIN_SRC emacs-lisp
-
-(use-package which-key
+(use-package company
   :ensure t
   :config
-  (which-key-mode +1))
-
-(use-package helm
-  :ensure t
-  :config
-  (require 'helm-config)
-  (put 'dired-find-alternate-file 'disabled nil)
-  (helm-mode 1)
-  (global-set-key (kbd "M-x") #'helm-M-x)
-  (global-set-key (kbd "C-x C-f") #'helm-find-files))
-
-(use-package eyebrowse
-  :ensure t
-  :config
-  (defun eyebrowse-goto-configuration-workspace ()
-  "Switch to workspace 0, open package configuration file and go to last line."
-    (interactive)
-    (eyebrowse-switch-to-window-config-0)
-    (find-file "~/.emacs.d/configuration.org")
-    (evil-goto-line)
-    (evil-previous-line 2))
-  (progn
-    (define-key eyebrowse-mode-map (kbd "M-0")
-      'eyebrowse-goto-configuration-workspace)
-
-    (define-key eyebrowse-mode-map (kbd "M-1")
-      'eyebrowse-switch-to-window-config-1)
-
-    (define-key eyebrowse-mode-map (kbd "M-2")
-      'eyebrowse-switch-to-window-config-2)
-
-    (define-key eyebrowse-mode-map (kbd "M-3")
-      'eyebrowse-switch-to-window-config-3)
-
-    (define-key eyebrowse-mode-map (kbd "M-4")
-      'eyebrowse-switch-to-window-config-4)
-
-    (define-key eyebrowse-mode-map (kbd "M-5")
-      'eyebrowse-switch-to-window-config-5)
-
-    (eyebrowse-mode t)
-    (setq eyebrowse-new-workspace t)))
-
+  (global-company-mode))
 
 #+END_SRC
 
-** File Managers
+* Languages
+** Org
+Remember to install org-mode before using emacs. The built-in version
+of org-mode is outdated.
 
 #+BEGIN_SRC emacs-lisp
-
-(use-package neotree
-  :ensure t
-  :config
-  (setq neo-smart-open t)
-  (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
-  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
-  (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
-  (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
-  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle))
-
-(use-package ranger
-  :ensure t
-  :config
-  (global-set-key (kbd "C-x d")
-                  '(lambda ()
-                     "Hide neotree before opening ranger"
-                     (interactive) (neotree-hide) (ranger))))
-
-#+END_SRC
-
-** Languages
-
-#+BEGIN_SRC emacs-lisp
-
-(use-package markdown-mode
-  :ensure t)
 
 (use-package org
   :ensure t
@@ -411,7 +416,7 @@
         (quote ((vm . vm-visit-folder-other-frame)
                 (vm-imap . vm-visit-imap-folder-other-frame)
                 (gnus . org-gnus-no-new-news)
-                (file . find-file)        ;; Open file in the same frame and window :)
+                (file . find-file)        ;; Open file in the same frame and window
                 (wl . wl-other-frame))))
   (setq org-log-done 'time)
   (setq org-todo-keywords
@@ -426,17 +431,51 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode))
+#+END_SRC
+
+** Markdown
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package markdown-mode
+  :ensure t)
+
+#+END_SRC
+** Haskell
+
+#+BEGIN_SRC emacs-lisp
 
 (use-package haskell-mode
   :ensure t)
 
 #+END_SRC
 
-** Themes
+** Bibtex
+
+#+BEGIN_SRC emacs-lisp
+(use-package helm-bibtex
+  :ensure t)
+#+END_SRC
+
+See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-your-bibtex-files-in-order/][this blog]] for more info.
+#+BEGIN_SRC emacs-lisp
+(use-package org-ref
+  :ensure t)
+#+END_SRC
+
+** Proof General
+
+#+BEGIN_SRC emacs-lisp
+
+(unless (file-directory-p "~/.emacs.d/lisp/PG")
+        (shell-command "git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG;
+                        cd ~/.emacs.d/lisp/PG; make;"))
+
+(load "~/.emacs.d/lisp/PG/generic/proof-site")
+
+#+END_SRC
+
+* Themes
 
 #+BEGIN_SRC emacs-lisp
 (use-package spacemacs-theme
@@ -455,18 +494,6 @@
   (spaceline-spacemacs-theme)
   (setq spaceline-buffer-size-p nil)
   (setq spaceline-minor-modes-p nil))
-
-#+END_SRC
-
-** Proof General
-
-#+BEGIN_SRC emacs-lisp
-
-(unless (file-directory-p "~/.emacs.d/lisp/PG")
-        (shell-command "git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG;
-                        cd ~/.emacs.d/lisp/PG; make;"))
-
-(load "~/.emacs.d/lisp/PG/generic/proof-site")
 
 #+END_SRC
 
