@@ -141,9 +141,6 @@ export PATH="$PATH:$HOME/npm/bin"
 # p ipython
 alias p='ipython'
 
-# python plotter
-alias plot='python3 ~/.plotter.py'
-
 # pygments (colourful cat)
 function c = {
     if [[ $(cat $1 | wc -l) -ge 30 ]]
