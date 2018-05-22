@@ -36,7 +36,7 @@ PROGRAMS=(
     ghostscript
     gphoto2
     sox
-# GUI Programs
+# GUI User Programs
     gparted
     inkscape
     meld
@@ -45,12 +45,19 @@ PROGRAMS=(
     transmission-gtk
     telegram
     vlc
-# Power User
-    powertop
+    vim-gtk3
+    emacs25
+# CLI User Programs
+    cmus
     ranger
-    tmux
     w3m
+# Power User
+    zsh
+    powertop
+    tmux
     xsel
+    htop
+    tree
 # Network
     wget
     curl
@@ -68,6 +75,8 @@ PROGRAMS=(
     libxss1
     libappindicator1
     libindicator7
+# Ubuntu restricted extras
+    ubuntu-restricted-extras
 )
 
 function ask_for_password {
@@ -164,5 +173,9 @@ function install_powerline_font {
     # Install spacevim"
     sh -c "$(wget -qO- https://raw.githubusercontent.com/liuchengxu/space-vim/master/install.sh)"
 
-
+    # Install anaconda"
+    CONDA_VERSION="5.1.0";
+    wget https://repo.anaconda.com/archive/Anaconda3-$VERSION-Linux-x86_64.sh;
+    bash Anaconda3-$VERSION-Linux-x86_64.sh;
+    rm Anaconda3-$VERSION-Linux-x86_64.sh;
 # }
