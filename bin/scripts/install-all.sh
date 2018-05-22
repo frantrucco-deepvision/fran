@@ -129,6 +129,14 @@ function install_google_chrome {
     rm google-chrome*.deb;
 }
 
+function install_powerline_font {
+    git clone https://github.com/powerline/fonts.git;
+    cd fonts &&
+    ./install.sh &&
+    cd .. &&
+    rm -rf fonts;
+}
+
 # function main {
     ask_for_password;
     try_mkdir_log $LOG_DIR;
@@ -144,6 +152,7 @@ function install_google_chrome {
     try_install "menda-theme" "install_menda_theme";
     try_install "zotero" "./zotero.sh";
     try_install "oh-my-zsh" "./oh-my-zsh.sh";
+    try_install "powerline_font" "install_powerline_font"
 
     # Configure git
     git config --global user.name "Francisco Trucco"
@@ -154,5 +163,6 @@ function install_google_chrome {
 
     # Install spacevim"
     sh -c "$(wget -qO- https://raw.githubusercontent.com/liuchengxu/space-vim/master/install.sh)"
+
 
 # }
