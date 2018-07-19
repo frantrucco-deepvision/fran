@@ -26,7 +26,7 @@
  '(org-agenda-files (quote ("~/Desktop/thesis/thesis.org")))
  '(package-selected-packages
    (quote
-    (org-contrib org-ref helm-bibtex spaceline spacemacs-theme haskell-mode company org-bullets markdown-mode ranger neotree eyebrowse helm which-key flycheck smartparens evil-mc evil-surround super-save evil-magit magit evil-leader evil use-package))))
+    (ox-ipynb outline-magic latex-math-preview preview-latex google-translate org-contrib org-ref helm-bibtex spaceline spacemacs-theme haskell-mode company org-bullets markdown-mode ranger neotree eyebrowse helm which-key flycheck smartparens evil-mc evil-surround super-save evil-magit magit evil-leader evil use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
