@@ -5,7 +5,7 @@ from tkinter import font
 
 
 MD_FILENAME = '/home/fran/bin/logger/db.md'
-PATH = '/home/fran/bin/logger'
+PATH = '/home/fran/bin/logger/db'
 
 
 class InputBox(tk.Tk):
@@ -50,68 +50,6 @@ class InputBox(tk.Tk):
         return answer
 
 
-class Table():
-    def __init__(self):
-        self.data = {}
-
-    def add_entry(self, entry, category):
-        category = category.lower().capitalize()
-        if category not in self.data:
-            self.data[category] = []
-
-        self.data[category].append(entry)
-
-    def to_org_mode(self):
-        answer = ''
-        items = self.data.items()
-        items = list(items)
-        items.sort()
-
-        for category, entries in items:
-            answer += '\n## {}\n'.format(category)
-            for entry in entries:
-                answer += '```\n'
-                answer += '{}'.format(entry)
-                answer += '\n```\n\n'
-        return answer
-
-    @classmethod
-    def from_org_mode(cls, orgfile):
-        table = cls()
-        reading_entry = False
-        category = None
-        for line in orgfile:
-            if line.startswith('## ') and not reading_entry:
-                category = line[len('## '):-1]
-            elif line.startswith('```') and not reading_entry:
-                reading_entry = True
-                entry = ''
-            elif line.startswith('```') and reading_entry:
-                reading_entry = False
-                assert category is not None, 'Bad markdown file'
-
-                table.add_entry(entry[:-1], category)
-            elif reading_entry:
-                entry += line
-
-        return table
-
-    def save(self):
-        org = '# MyStuff DB\n\n' + self.to_org_mode()
-        with open(MD_FILENAME, 'w') as f:
-            f.write(org)
-
-    def load():
-        try:
-            with open(MD_FILENAME, 'r') as f:
-                table = Table.from_org_mode(f)
-        except AssertionError as error:
-            raise error
-        except:
-            table = Table()
-        return table
-
-
 def get_category(entry):
     inputBox = InputBox('Input Category', entry)
     try:
@@ -145,10 +83,11 @@ def get_selected_text():
 
 if __name__ == '__main__':
     os.chdir(PATH)
-    table = Table.load()
     entry = get_selected_text()
     if entry.strip(' \n\t') is '':
         entry = get_entry()
     category = get_category(entry)
-    table.add_entry(entry, category)
-    table.save()
+
+    category = category.title().replace(" ", "")
+    with open(category, 'a+') as f:
+        f.write(entry + '\n')
