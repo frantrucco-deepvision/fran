@@ -20,6 +20,7 @@ PROGRAMS=(
     coq
     coqide
 # Latex
+    chktex
     latexmk
     latex2html
     texlive-bibtex-extra
@@ -32,6 +33,7 @@ PROGRAMS=(
     texlive-science
     texlive-xetex
     texlive-luatex
+    texlive-math-extra
 # Libraries
     ghostscript
     gphoto2
@@ -43,7 +45,6 @@ PROGRAMS=(
     kolourpaint4
     firefox
     transmission-gtk
-    telegram
     vlc
     vim-gtk3
     emacs25
@@ -66,7 +67,6 @@ PROGRAMS=(
     openssh-server
     speedtest-cli
 # Format conversion and manipulation
-    pdftk
     ffmpeg
 # My library dependencies
     id3tool
@@ -75,8 +75,6 @@ PROGRAMS=(
     libxss1
     libappindicator1
     libindicator7
-# Ubuntu restricted extras
-    ubuntu-restricted-extras
 )
 
 function ask_for_password {
@@ -160,7 +158,6 @@ function install_powerline_font {
     try_install "google-chrome" "install_google_chrome";
     try_install "menda-theme" "install_menda_theme";
     try_install "zotero" "./zotero.sh";
-    try_install "oh-my-zsh" "./oh-my-zsh.sh";
     try_install "powerline_font" "install_powerline_font"
 
     # Configure git
@@ -170,12 +167,6 @@ function install_powerline_font {
     echo "----------------------------------------------------------------------";
     echo ">>> Interactive";
 
-    # Install spacevim"
-    sh -c "$(wget -qO- https://raw.githubusercontent.com/liuchengxu/space-vim/master/install.sh)"
-
-    # Install anaconda"
-    CONDA_VERSION="5.1.0";
-    wget https://repo.anaconda.com/archive/Anaconda3-$VERSION-Linux-x86_64.sh;
-    bash Anaconda3-$VERSION-Linux-x86_64.sh;
-    rm Anaconda3-$VERSION-Linux-x86_64.sh;
+    # Ubuntu restricted extras
+    sudo apt-get install ubuntu-restricted-extras;
 # }
