@@ -192,3 +192,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias emacs='emacs25'
 
 export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
+
+export OPAMROOT=~/.opam/opam-coq.8.8.1
+eval `opam config env`
