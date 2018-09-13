@@ -16,9 +16,6 @@ PROGRAMS=(
 # Ocaml
     ocaml
     opam
-# Coq
-    coq
-    coqide
 # Latex
     chktex
     latexmk
@@ -144,6 +141,14 @@ function install_powerline_font {
     rm -rf fonts;
 }
 
+function install_coq {
+    mkdir ~/.opam &&
+    export OPAMROOT=~/.opam/opam-coq.8.8.1 &&
+    opam init -n --comp=4.02.3 -j 4 &&
+    opam repo add coq-released http://coq.inria.fr/opam/released &&
+    opam install coq.8.8.1 && opam pin add coq 8.8.1;
+}
+
 # function main {
     ask_for_password;
     try_mkdir_log $LOG_DIR;
@@ -159,6 +164,8 @@ function install_powerline_font {
     try_install "menda-theme" "install_menda_theme";
     try_install "zotero" "./zotero.sh";
     try_install "powerline_font" "install_powerline_font"
+
+    try_install "coq using opam" "install_coq";
 
     # Configure git
     git config --global user.name "Francisco Trucco"
