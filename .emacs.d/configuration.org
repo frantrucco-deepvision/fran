@@ -1,5 +1,6 @@
 * Package configuration
 ** Package and archives
+
 #+BEGIN_SRC emacs-lisp
 (require 'package)
 
@@ -181,7 +182,13 @@
     (eyebrowse-mode t)
     (setq eyebrowse-new-workspace t)))
 
+(use-package ag
+  :ensure t
+)
 
+(use-package projectile
+  :ensure t
+)
 #+END_SRC
 
 ** File Managers
@@ -192,6 +199,15 @@
   :ensure t
   :config
   (setq neo-smart-open t)
+
+  ;; Hide these files in neotree
+  (setq neo-hidden-regexp-list
+  (append '("\\.v.d$"
+            "\\.vo$"
+            "\\.glob$"
+            "\\.aux$")
+  neo-hidden-regexp-list))
+
   (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
@@ -199,7 +215,8 @@
   (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
   (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
   (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
-  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle))
+  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle)
+  )
 
 (use-package ranger
   :ensure t
@@ -406,7 +423,35 @@
   (global-set-key "\C-ct" 'google-translate-at-point)
   (global-set-key "\C-cT" 'google-translate-query-translate))
 
-#+END_SRC
+(use-package avy
+  :ensure t
+  :config
+  (global-set-key (kbd "C-;") 'avy-goto-word-1))
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+  ;; Add yasnippet support for all company backends
+  ;; https://github.com/syl20bnr/spacemacs/pull/179
+  (defvar company-mode/enable-yas t
+  "Enable yasnippet for all backends.")
+
+  (defun company-mode/backend-with-yas (backend)
+  (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+      backend
+      (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+
+  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+)
+
+(use-package yasnippet-snippets
+  :ensure t)
+
+#+End_SRC
 
 * Languages
 ** Org
@@ -439,6 +484,7 @@ of org-mode is outdated.
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+(use-package org-tempo)
 #+END_SRC
 
 ** Markdown
@@ -491,16 +537,26 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 
 (load "~/.emacs.d/lisp/PG/generic/proof-site")
 
+(use-package company-coq
+  :ensure t
+  :config
+  (add-hook 'coq-mode-hook #'company-coq-mode))
+
+(custom-set-variables '(coq-prog-name "/home/fran/.opam/opam-coq.8.8.1/4.02.3/bin/coqtop -Q . Top") '(proof-three-window-enable t))
+
 #+END_SRC
 
 * Themes
 
 #+BEGIN_SRC emacs-lisp
+
 (use-package spacemacs-theme
   :ensure t
   :defer t
   :init
-  (load-theme 'spacemacs-dark t))
+  (load-theme 'spacemacs-dark t)
+  (set-frame-font "Deja Vu Sans Mono 11" nil t)
+)
 
 (use-package spaceline
   :ensure t
@@ -513,6 +569,7 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
   (setq spaceline-buffer-size-p nil)
   (setq spaceline-minor-modes-p nil))
 
+
 #+END_SRC
 
 * Bindings
@@ -523,10 +580,7 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
                        "bd"    'kill-this-buffer
                        "e"     'eval-last-sexp
                        "gs"    'magit-status
-                       "<SPC>" 'helm-M-x)
+                       "<SPC>" 'helm-M-x
+                       "/"     'projectile-ag)
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-(eval-after-load 'latex
-                 '(define-key LaTeX-mode-map [(tab)] 'outline-cycle))
-#+END_SRC
