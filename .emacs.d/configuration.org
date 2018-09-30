@@ -205,7 +205,12 @@
   (append '("\\.v.d$"
             "\\.vo$"
             "\\.glob$"
-            "\\.aux$")
+            "\\.aux$"
+            "\\.log$"
+            "\\.toc$"
+            "\\.bbl$"
+            "\\.blg$"
+            "_region_.*")
   neo-hidden-regexp-list))
 
   (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
@@ -341,29 +346,28 @@
 * Better Editing
 ** Indentation, tabs, spaces, newlines, etc.
 #+BEGIN_SRC emacs-lisp
-;; Emacs modes typically provide a standard means to change the
-;; indentation width -- eg. c-basic-offset: use that to adjust your
-;; personal indentation width, while maintaining the style (and
-;; meaning) of any files you load.
-(setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
-(setq-default tab-width 4)            ;; but maintain correct appearance
+    ;; Emacs modes typically provide a standard means to change the
+    ;; indentation width -- eg. c-basic-offset: use that to adjust your
+    ;; personal indentation width, while maintaining the style (and
+    ;; meaning) of any files you load.
+    (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
+    (setq-default tab-width 4)            ;; but maintain correct appearance
 
-;; Newline at end of file
-(setq require-final-newline t)
+    ;; Newline at end of file
+    (setq require-final-newline t)
 
-;; smart tab behavior - indent or complete
-(setq tab-always-indent 'complete)
+    ;; smart tab behavior - indent or complete
+    (setq tab-always-indent 'complete)
 
-;; highlight the current line
-(global-hl-line-mode +1)
+    ;; highlight the current line
+    (global-hl-line-mode +1)
 
-(custom-set-variables
-  '(initial-frame-alist (quote ((fullscreen . maximized)))))
+    (custom-set-variables
+      '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
-;; Split vertically
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
-
+  ;; Split horizontally
+  (setq split-height-threshold nil)
+  (setq split-width-threshold 80)
 #+END_SRC
 
 ** Built-in Packages
@@ -521,10 +525,28 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 
 #+BEGIN_SRC emacs-lisp
 
-(add-hook 'LaTeX-mode-hook #'outline-minor-mode)
+  (add-hook 'LaTeX-mode-hook #'outline-minor-mode)
+  (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
-(use-package latex-math-preview
-  :ensure t)
+  (use-package latex-math-preview
+    :ensure t)
+
+  (use-package auctex
+    :defer t
+    :ensure t
+    :config)
+
+  (eval-after-load "evil-maps"
+    (dolist (map '(evil-motion-state-map
+                   evil-insert-state-map
+                   evil-emacs-state-map))
+            (define-key (eval map) "'" nil)))
+
+    (setq LaTeX-math-abbrev-prefix '"'")
+
+  ;; (setq-default TeX-master nil) ; Query for master file.
+
 #+END_SRC
 
 ** Proof General
@@ -543,6 +565,10 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
   (add-hook 'coq-mode-hook #'company-coq-mode))
 
 (custom-set-variables '(coq-prog-name "/home/fran/.opam/opam-coq.8.8.1/4.02.3/bin/coqtop -Q . Top") '(proof-three-window-enable t))
+
+;; Three windows always hybrid policy
+;; Docs: https://proofgeneral.github.io/doc/userman/ProofGeneral_9/#index-proof_002dlayout_002dwindows
+(setq proof-three-window-mode-policy 'hybrid)
 
 #+END_SRC
 
@@ -575,12 +601,15 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 * Bindings
 
 #+BEGIN_SRC emacs-lisp
+
   (evil-leader/set-key "ft"    'neotree-toggle
                        "bb"    'switch-to-buffer
                        "bd"    'kill-this-buffer
                        "e"     'eval-last-sexp
                        "gs"    'magit-status
                        "<SPC>" 'helm-M-x
-                       "/"     'projectile-ag)
+                       "/"     'projectile-ag
+                       "p"     'preview-buffer)
+
 #+END_SRC
 

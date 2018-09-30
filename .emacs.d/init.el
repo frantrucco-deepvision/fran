@@ -26,7 +26,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (ag projectile company-coq yasnippet-snippets yasnippet evil-avy avy ox-ipynb outline-magic latex-math-preview preview-latex google-translate org-contrib org-ref helm-bibtex spaceline spacemacs-theme haskell-mode company org-bullets markdown-mode ranger neotree eyebrowse helm which-key flycheck smartparens evil-mc evil-surround super-save evil-magit magit evil-leader evil use-package)))
+    (auctex ag projectile company-coq yasnippet-snippets yasnippet evil-avy avy ox-ipynb outline-magic latex-math-preview preview-latex google-translate org-contrib org-ref helm-bibtex spaceline spacemacs-theme haskell-mode company org-bullets markdown-mode ranger neotree eyebrowse helm which-key flycheck smartparens evil-mc evil-surround super-save evil-magit magit evil-leader evil use-package)))
  '(proof-three-window-enable t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
