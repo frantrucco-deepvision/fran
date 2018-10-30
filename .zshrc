@@ -8,7 +8,7 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
+FZF_UNIQUE_HISTORY=1
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -190,13 +190,14 @@ function latexc = {
 # for some weird reason octave runs the gui version by default
 alias octave='octave --no-window-system'
 
+# I'm not that smart
+alias rm=trash
+
 # Ghostscript is fucking annoying
 alias gs='gst'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-alias emacs='emacs25'
 
 export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 
