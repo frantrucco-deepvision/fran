@@ -141,6 +141,15 @@ function install_powerline_font {
     rm -rf fonts;
 }
 
+function install_terminator {
+    sudo add-apt-repository --yes ppa:gnome-terminator &&
+    sudo apt-get update &&
+    sudo apt-get install --yes terminator &&
+    mkdir ~/.config/terminator/plugins &&
+    cd ~/.config/terminator/plugins &&
+    wget https://git.io/v5Zww -O $HOME"/.config/terminator/plugins/terminator-themes.py" ~/.config/terminator/plugins/terminator-themes.py;
+}
+
 function install_coq {
     mkdir ~/.opam &&
     export OPAMROOT=~/.opam/opam-coq.8.8.1 &&
@@ -166,6 +175,7 @@ function install_coq {
     try_install "powerline_font" "install_powerline_font"
 
     try_install "coq using opam" "install_coq";
+    try_install "terminator and terminator themes" "install_terminator";
 
     # Configure git
     git config --global user.name "Francisco Trucco"
