@@ -142,12 +142,12 @@ function install_powerline_font {
 }
 
 function install_terminator {
+    plugin_path="~/.config/terminator/plugins" &&
     sudo add-apt-repository --yes ppa:gnome-terminator &&
     sudo apt-get update &&
     sudo apt-get install --yes terminator &&
-    mkdir ~/.config/terminator/plugins &&
-    cd ~/.config/terminator/plugins &&
-    wget https://git.io/v5Zww -O $HOME"/.config/terminator/plugins/terminator-themes.py" ~/.config/terminator/plugins/terminator-themes.py;
+    mkdir $plugin_path &&
+    wget https://git.io/v5Zww -O $plugin_path"/terminator-themes.py"
 }
 
 function install_coq {
