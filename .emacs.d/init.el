@@ -23,10 +23,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coq-prog-name "~/.opam/opam-coq.8.8.1/4.02.3/bin/coqtop")
+ '(custom-safe-themes
+   (quote
+    ("26d49386a2036df7ccbe802a06a759031e4455f07bda559dcf221f53e8850e69" default)))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (auctex ag projectile company-coq yasnippet-snippets yasnippet evil-avy avy ox-ipynb outline-magic latex-math-preview preview-latex google-translate org-contrib org-ref helm-bibtex spaceline spacemacs-theme haskell-mode company org-bullets markdown-mode ranger neotree eyebrowse helm which-key flycheck smartparens evil-mc evil-surround super-save evil-magit magit evil-leader evil use-package)))
+    (info+ all-the-icons powerline-evil moe-theme auctex ag projectile company-coq yasnippet-snippets yasnippet evil-avy avy ox-ipynb outline-magic latex-math-preview preview-latex google-translate org-contrib org-ref helm-bibtex spaceline spacemacs-theme haskell-mode company org-bullets markdown-mode ranger neotree eyebrowse helm which-key flycheck smartparens evil-mc evil-surround super-save evil-magit magit evil-leader evil use-package)))
  '(proof-three-window-enable t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
