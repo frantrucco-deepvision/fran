@@ -195,41 +195,44 @@
 
 #+BEGIN_SRC emacs-lisp
 
-(use-package neotree
-  :ensure t
-  :config
-  (setq neo-smart-open t)
+  (use-package neotree
+    :ensure t
+    :config
+    (setq neo-smart-open t)
+    (neo-global--do-autorefresh)
 
-  ;; Hide these files in neotree
-  (setq neo-hidden-regexp-list
-  (append '("\\.v.d$"
-            "\\.vo$"
-            "\\.glob$"
-            "\\.aux$"
-            "\\.log$"
-            "\\.toc$"
-            "\\.bbl$"
-            "\\.blg$"
-            "_region_.*")
-  neo-hidden-regexp-list))
+    ;; Hide these files in neotree
+    (setq neo-hidden-regexp-list
+    (append '("\\.v.d$"
+              "\\.vo$"
+              "\\.glob$"
+              "\\.aux$"
+              "\\.log$"
+              "\\.toc$"
+              "\\.bbl$"
+              "\\.blg$"
+              "_region_.*")
+    neo-hidden-regexp-list))
 
-  (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
-  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
-  (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
-  (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
-  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle)
-  )
+    (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
+    (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+    (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+    (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+    (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
+    (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
+    (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
+    (evil-define-key 'normal neotree-mode-map (kbd ">") 'neotree-change-root)
+    (evil-define-key 'normal neotree-mode-map (kbd "<") 'neotree-select-up-node)
+    (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle)
+    )
 
-(use-package ranger
-  :ensure t
-  :config
-  (global-set-key (kbd "C-x d")
-                  '(lambda ()
-                     "Hide neotree before opening ranger"
-                     (interactive) (neotree-hide) (ranger))))
+  (use-package ranger
+    :ensure t
+    :config
+    (global-set-key (kbd "C-x d")
+                    '(lambda ()
+                       "Hide neotree before opening ranger"
+                       (interactive) (neotree-hide) (ranger))))
 
 #+END_SRC
 
@@ -593,32 +596,6 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 
 #+END_SRC
 
-* Themes
-
-#+BEGIN_SRC emacs-lisp
-
-(use-package spacemacs-theme
-  :ensure t
-  :defer t
-  :init
-  (load-theme 'spacemacs-dark t)
-  (set-frame-font "Deja Vu Sans Mono 11" nil t)
-)
-
-(use-package spaceline
-  :ensure t
-  :demand t
-  :init
-  (setq powerline-default-separator 'arrow-fade)
-  :config
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme)
-  (setq spaceline-buffer-size-p nil)
-  (setq spaceline-minor-modes-p nil))
-
-
-#+END_SRC
-
 * Bindings
 
 #+BEGIN_SRC emacs-lisp
@@ -631,6 +608,77 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
                        "<SPC>" 'helm-M-x
                        "/"     'projectile-ag
                        "p"     'preview-buffer)
+
+#+END_SRC
+
+* Themes
+
+#+BEGIN_SRC emacs-lisp
+
+    (use-package all-the-icons
+      :ensure t)
+  ;; You should only run this once
+  ;; (all-the-icons-install-fonts)
+
+    ;; (use-package spacemacs-theme
+    ;;   :ensure t
+    ;;   :defer t
+    ;;   :init
+    ;;   (load-theme 'spacemacs-dark t)
+    ;;   (set-frame-font "Deja Vu Sans Mono 11" nil t)
+    ;; )
+
+    (use-package doom-themes
+      :ensure t
+      :config
+      ;; Global settings (defaults)
+      (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
+            doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+      ;; Load the theme keep in mind that each theme may have their own settings.
+      ;; * doom-one
+      ;;   doom-one-light
+      ;;   doom-vibrant
+      ;;   doom-city-lights
+      ;;   doom-dracula
+      ;;   doom-Iosvkem
+      ;;   doom-molokai
+      ;; * doom-nord
+      ;;   doom-nord-light
+      ;;   doom-opera
+      ;;   doom-opera-light
+      ;; * doom-nova
+      ;; * doom-peacock
+      ;;   doom-solarized-light
+      ;;   doom-sourcerer
+      ;;   doom-spacegrey
+      ;;   doom-tomorrow-night
+      ;;   doom-tomorrow-day
+
+      (load-theme 'doom-nord t)
+
+      ;; Enable flashing mode-line on errors
+      (doom-themes-visual-bell-config)
+
+      ;; Enable custom neotree theme (all-the-icons must be installed!)
+      (doom-themes-neotree-config) ;; or for treemacs users
+
+      ;; Corrects (and improves) org-mode's native fontification.
+      (doom-themes-org-config))
+
+    (use-package spaceline
+      :ensure t
+      :demand t
+      :init
+      (setq powerline-default-separator 'arrow-fade)
+      :config
+      (require 'spaceline-config)
+      (spaceline-emacs-theme)
+      (spaceline-helm-mode)
+      (spaceline-info-mode)
+      (setq spaceline-buffer-size-p nil)
+      (setq spaceline-minor-modes-p nil))
+
 
 #+END_SRC
 
