@@ -80,8 +80,16 @@
 
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode t))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 (use-package evil-leader
   :ensure t
@@ -213,17 +221,6 @@
               "\\.blg$"
               "_region_.*")
     neo-hidden-regexp-list))
-
-    (evil-define-key 'normal neotree-mode-map (kbd "<SPC> f t") 'neotree-toggle)
-    (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-    (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-    (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-    (evil-define-key 'normal neotree-mode-map (kbd "d") 'neotree-delete-node)
-    (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-rename-node)
-    (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-change-root)
-    (evil-define-key 'normal neotree-mode-map (kbd ">") 'neotree-change-root)
-    (evil-define-key 'normal neotree-mode-map (kbd "<") 'neotree-select-up-node)
-    (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-hidden-file-toggle)
     )
 
   (use-package ranger
