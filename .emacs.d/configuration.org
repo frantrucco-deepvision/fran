@@ -614,6 +614,8 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 * Themes
 
 #+BEGIN_SRC emacs-lisp
+    (use-package fill-column-indicator
+      :ensure t)
 
     (use-package all-the-icons
       :ensure t)
