@@ -109,6 +109,12 @@
 (use-package evil-magit
   :ensure t)
 
+(use-package git-timemachine
+  :ensure t)
+
+(use-package git-wip-timemachine
+  :ensure t)
+
 #+END_SRC
 
 ** TouchPadOff in emacs!
