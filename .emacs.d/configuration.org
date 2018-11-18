@@ -641,6 +641,9 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
       (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
             doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
+      ;; Set font
+      (set-frame-font "Deja Vu Sans Mono 11" nil t)
+
       ;; Load the theme keep in mind that each theme may have their own settings.
       ;; * doom-one
       ;;   doom-one-light
