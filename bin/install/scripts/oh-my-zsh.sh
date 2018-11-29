@@ -31,17 +31,5 @@ env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH || {
     exit 1
 }
 
-# If this user's login shell is not already "zsh", attempt to switch.
-TEST_CURRENT_SHELL=$(expr "$SHELL" : '.*/\(.*\)')
-if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
-    printf "${BLUE}Time to change your default shell to zsh!${NORMAL}\n"
-    chsh -s $(grep /zsh$ /etc/shells | tail -1) || {
-        printf "Error: changing shell to zsh failed\n"
-        exit 1
-    }
-fi
-
-env zsh
-
 # install autocomplete
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
