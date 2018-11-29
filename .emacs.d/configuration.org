@@ -490,11 +490,6 @@ of org-mode is outdated.
   (org-babel-do-load-languages 'org-babel-load-languages '((shell . t)))
   )
 
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 (use-package org-tempo)
 #+END_SRC
 

@@ -3,6 +3,7 @@ declare -A APT_ADDITIONAL_PACKAGES;
 APT_ADDITIONAL_PACKAGES=(
     ["pdftk"]="ppa:malteworld/ppa"
     ["telegram-desktop"]="ppa:atareao/telegram"
+    ["emacs26"]="ppa:kelleyk/emacs"
 )
 
 APT_PROGRAMS=(
@@ -46,7 +47,6 @@ APT_PROGRAMS=(
     transmission-gtk
     vlc
     vim-gtk3
-    emacs25
 # CLI User Programs
     cmus
     ranger
