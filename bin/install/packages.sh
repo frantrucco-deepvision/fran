@@ -72,4 +72,9 @@ APT_PROGRAMS=(
 # My library dependencies
     id3tool
     youtube-dl
+# xmonad
+    xmonad
+    suckless-tools
+    xscreensaver
+    xmobar
 )
