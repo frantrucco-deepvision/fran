@@ -11,7 +11,7 @@ git clone https://github.com/frantrucco/fran &&
 mv -f fran/.* ~/ &&
 mv -f fran/* ~/ &&
 rmdir fran &&
-pushd ~/bin/scripts &&
+pushd ~/bin/install &&
 chmod +x *.sh &&
 ./install-all.sh &&
 popd;
