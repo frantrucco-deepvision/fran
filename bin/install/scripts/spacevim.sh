@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sh -c "$(wget -qO- https://raw.githubusercontent.com/liuchengxu/space-vim/master/install.sh)"
+curl -sLf https://spacevim.org/install.sh | bash

@@ -51,6 +51,7 @@ APT_PROGRAMS=(
     cmus
     ranger
     w3m
+    trash-cli
 # Power User
     zsh
     powertop
