@@ -49,6 +49,7 @@ APT_PACKAGES=(
     transmission-gtk
     vlc
     vim-gtk3
+    okular
 # CLI User Programs
     cmus
     ranger
