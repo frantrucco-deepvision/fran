@@ -13,6 +13,6 @@ mv -f fran/* ~/ &&
 rmdir fran &&
 pushd ~/bin/install &&
 chmod +x *.sh &&
-./install-all.sh &&
+./install.sh &&
 popd;
 ```
