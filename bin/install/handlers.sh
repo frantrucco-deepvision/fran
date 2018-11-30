@@ -7,7 +7,7 @@ function show {
 }
 
 function u_general {
-    handler=$1 
+    handler=$1
     command=$2
     msg=$3
     success=$4
@@ -19,10 +19,10 @@ function u_general {
     echo;
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-	$handler "$command" "$msg" "$success" "$failure";
+        $handler "$command" "$msg" "$success" "$failure";
     else
         $failure;
-	return 1;
+        return 1;
     fi
     return 0;
 }
@@ -43,7 +43,7 @@ function h {    # Common handler (try catch)
     echo;
     $command;
     error=$?;
-    
+
     if [ $error -ne 0 ]; then
         echo -e "$FAILED: $command";
         $failure;
@@ -56,7 +56,7 @@ function h {    # Common handler (try catch)
 }
 
 function e {    # Essential handler (Exit in case of failure)
-    command=$1  # Try to execute this command             
+    command=$1  # Try to execute this command
     msg=$2      # Show this message prior to execution
     success=$3  # In case of success execute this command
     failure=$4  # In case of failure execute this command
@@ -69,24 +69,24 @@ function e {    # Essential handler (Exit in case of failure)
     fi
 }
 
-function u {    # Ask the user if they wants to execute this command 
-    command=$1  # Try to execute this command             
+function u {    # Ask the user if they wants to execute this command
+    command=$1  # Try to execute this command
     msg=$2      # Show this message prior to execution
     success=$3  # In case of success execute this command
     failure=$4  # In case of failure execute this command
 
-    u_general h $command $msg $success $failure 
+    u_general h $command $msg $success $failure
     return $?;
 }
 
 function eu {   # Ask the user if they wants to execute this command
-	        # and exit in case of failure
-    command=$1  # Try to execute this command             
+                # and exit in case of failure
+    command=$1  # Try to execute this command
     msg=$2      # Show this message prior to execution
     success=$3  # In case of success execute this command
     failure=$4  # In case of failure execute this command
 
-    u_general e $command $msg $success $failure 
+    u_general e $command $msg $success $failure
     error=$?;
     if [ $error -ne 0 ]; then
         exit 1;
@@ -95,7 +95,7 @@ function eu {   # Ask the user if they wants to execute this command
 
 function ask_user { # Ask the user to execute success command
     question=$1;    # Show this question (yes or no question)
-    success=$2;     # If user answers yes execute this command    
+    success=$2;     # If user answers yes execute this command
     failure=$3;     # If user answers no execute this command
 
     show "$1 (y/n)\n\n";
@@ -104,10 +104,10 @@ function ask_user { # Ask the user to execute success command
     echo;
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-	$success;
+        $success;
     else
         $failure;
-	return 1;
+        return 1;
     fi
     return 0;
 }

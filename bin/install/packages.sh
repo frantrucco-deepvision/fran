@@ -6,12 +6,15 @@ APT_ADDITIONAL_PACKAGES=(
     ["emacs26"]="ppa:kelleyk/emacs"
 )
 
-APT_PROGRAMS=(
+APT_PACKAGES=(
 # Dev
     valgrind
     git
 # Python
     python3-pip
+    python-pip
+    python-dev
+    build-essential
 # Haskell
     ghc
     cabal-install
@@ -19,8 +22,7 @@ APT_PROGRAMS=(
     ocaml
     opam
 # Coq
-    coq
-    coqide
+    m4
 # Latex
     latexmk
     latex2html
@@ -74,7 +76,35 @@ APT_PROGRAMS=(
     youtube-dl
 # xmonad
     xmonad
-    suckless-tools
     xscreensaver
+    libghc-xmonad-contrib-dev
     xmobar
+    stalonetray
+    suckless-tools
+    scrot
+    cabal-install
+    xcompmgr
+)
+
+PIP_PACKAGES=(
+    pandas
+    seaborn
+    scikit-learn
+    jupyter
+    scrapy
+    pillow
+    sqlalchemy
+    twisted
+    numpy
+    scipy
+    matplotlib
+    pygame
+    pyglet
+    scapy
+    nltk
+    nose
+    sympy
+    ipython
+    matplotlib
+    Django
 )
