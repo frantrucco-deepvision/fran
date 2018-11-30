@@ -134,6 +134,7 @@ function ocr = {
 export TERM=xterm-256color
 
 # VIRTUALENVWRAPPER
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -202,4 +203,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 
 export OPAMROOT=~/.opam-coq.8.8.2
-eval `opam config env`
+eval `opam config env --root=/home/fran/.opam-coq.8.8.2`
