@@ -170,15 +170,34 @@
 (use-package eyebrowse
   :ensure t
   :config
+  (defun eyebrowse-goto-first-shell-workspace ()
+  "Switch to workspace 8, run term emulator."
+    (interactive)
+    (eyebrowse-switch-to-window-config-8)
+    (if (get-buffer "*ansi-term*")
+        (switch-to-buffer "*ansi-term*")
+        (ansi-term "/usr/bin/zsh"))
+    (evil-emacs-state))
+
+  (defun ansi-term-and-rename-to-second ()
+    (interactive)
+    (ansi-term "/usr/bin/zsh")
+    (rename-buffer "*ansi-term*<2>"))
+
+  (defun eyebrowse-goto-second-shell-workspace ()
+  "Switch to workspace 9, run term emulator."
+    (interactive)
+    (eyebrowse-switch-to-window-config-9)
+    (if (get-buffer "*ansi-term*<2>")
+        (switch-to-buffer "*ansi-term*<2>")
+        (ansi-term-and-rename-to-second))
+    (evil-emacs-state))
   (defun eyebrowse-goto-configuration-workspace ()
   "Switch to workspace 0, open package configuration file."
     (interactive)
     (eyebrowse-switch-to-window-config-0)
     (find-file "~/.emacs.d/configuration.org"))
   (progn
-    (define-key eyebrowse-mode-map (kbd "M-0")
-      'eyebrowse-goto-configuration-workspace)
-
     (define-key eyebrowse-mode-map (kbd "M-1")
       'eyebrowse-switch-to-window-config-1)
 
@@ -193,6 +212,21 @@
 
     (define-key eyebrowse-mode-map (kbd "M-5")
       'eyebrowse-switch-to-window-config-5)
+
+    (define-key eyebrowse-mode-map (kbd "M-6")
+      'eyebrowse-switch-to-window-config-6)
+
+    (define-key eyebrowse-mode-map (kbd "M-7")
+      'eyebrowse-switch-to-window-config-7)
+
+    (define-key eyebrowse-mode-map (kbd "M-8")
+      'eyebrowse-goto-first-shell-workspace)
+
+    (define-key eyebrowse-mode-map (kbd "M-9")
+      'eyebrowse-goto-second-shell-workspace)
+
+    (define-key eyebrowse-mode-map (kbd "M-0")
+      'eyebrowse-goto-configuration-workspace)
 
     (eyebrowse-mode t)
     (setq eyebrowse-new-workspace t)))
@@ -659,7 +693,7 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
       ;;   doom-tomorrow-night
       ;;   doom-tomorrow-day
 
-      (load-theme 'doom-nord t)
+      (load-theme 'doom-Iosvkem t)
 
       ;; Enable flashing mode-line on errors
       (doom-themes-visual-bell-config)
@@ -683,6 +717,7 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
       (setq spaceline-buffer-size-p nil)
       (setq spaceline-minor-modes-p nil))
 
+    (set-background-color "black")
 
 #+END_SRC
 
