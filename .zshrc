@@ -188,6 +188,9 @@ function latexc = {
     pdflatex -output-directory=target $1;
 }
 
+# Who uses python2??? :P
+alias python=python3
+
 # for some weird reason octave runs the gui version by default
 alias octave='octave --no-window-system'
 
