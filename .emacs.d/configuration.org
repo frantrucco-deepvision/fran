@@ -453,7 +453,11 @@
 (use-package flycheck
   :ensure t
   :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  (setq flycheck-python-pycompile-executable "/usr/bin/python3")
+  (setq flycheck-python-flake8-executable "/usr/bin/pyflakes3")
+  (setq flycheck-python-pylint-executable "/usr/bin/pylint3")
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+)
 
 (use-package company
   :ensure t
