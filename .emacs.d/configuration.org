@@ -454,8 +454,8 @@
   :ensure t
   :config
   (setq flycheck-python-pycompile-executable "/usr/bin/python3")
-  (setq flycheck-python-flake8-executable "/usr/bin/pyflakes3")
-  (setq flycheck-python-pylint-executable "/usr/bin/pylint3")
+  (setq flycheck-python-flake8-executable "/usr/bin/python3")
+  (setq flycheck-python-pylint-executable "/usr/bin/python3")
   (add-hook 'after-init-hook #'global-flycheck-mode)
 )
 
@@ -482,6 +482,7 @@
   :config
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
+  (add-hook 'LaTeX-mode-hook #'yas-minor-mode)
 
   ;; Add yasnippet support for all company backends
   ;; https://github.com/syl20bnr/spacemacs/pull/179
@@ -495,6 +496,9 @@
               '(:with company-yasnippet))))
 
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+
+  (unless (file-directory-p "~/.emacs.d/snippets/latex/")
+          (shell-command "git clone https://github.com/frantrucco/yasnippets-latex ~/.emacs.d/snippets/latex;"))
 )
 
 (use-package yasnippet-snippets
@@ -503,6 +507,27 @@
 #+End_SRC
 
 * Languages
+** Python
+
+   #+begin_src elisp
+(defun my-python-hooks()
+    (interactive)
+    (setq tab-width     4
+          python-indent 4
+          python-shell-interpreter "ipython"
+          python-shell-interpreter-args "-i")
+    (flycheck-select-checker 'python-flake8)
+
+    ;; pythom mode keybindings
+    (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
+    (define-key python-mode-map (kbd "M-,") 'jedi:goto-definition-pop-marker)
+    (define-key python-mode-map (kbd "M-/") 'jedi:show-doc)
+    (define-key python-mode-map (kbd "M-?") 'helm-jedi-related-names)
+)
+
+(add-hook 'python-mode-hook 'my-python-hooks)
+   #+end_src
+
 ** Org
 Remember to install org-mode before using emacs. The built-in version
 of org-mode is outdated.
@@ -531,14 +556,6 @@ of org-mode is outdated.
 (use-package org-tempo)
 #+END_SRC
 
-** Markdown
-
-#+BEGIN_SRC emacs-lisp
-
-(use-package markdown-mode
-  :ensure t)
-
-#+END_SRC
 ** Haskell
 
 #+BEGIN_SRC emacs-lisp
@@ -619,13 +636,12 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
                         cd ~/.emacs.d/lisp/PG; make;"))
 
 (load "~/.emacs.d/lisp/PG/generic/proof-site")
-
 (use-package company-coq
   :ensure t
   :config
   (add-hook 'coq-mode-hook #'company-coq-mode))
 
-(custom-set-variables '(coq-prog-name "/home/fran/.opam/opam-coq.8.8.1/4.02.3/bin/coqtop -Q . Top") '(proof-three-window-enable t))
+(custom-set-variables '(coq-prog-name "/home/fran/.opam-coq.8.8.2/4.02.3/bin/coqtop") '(proof-three-window-enable t))
 
 ;; Three windows always hybrid policy
 ;; Docs: https://proofgeneral.github.io/doc/userman/ProofGeneral_9/#index-proof_002dlayout_002dwindows

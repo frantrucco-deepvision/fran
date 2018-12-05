@@ -12,6 +12,8 @@ APT_PACKAGES=(
     git
 # Python
     python3-pip
+    python3-pyflakes
+    pylint3
     python-pip
     python-dev
     build-essential
@@ -75,19 +77,13 @@ APT_PACKAGES=(
 # My library dependencies
     id3tool
     youtube-dl
-# xmonad
-    xmonad
-    xscreensaver
-    libghc-xmonad-contrib-dev
-    xmobar
-    stalonetray
-    suckless-tools
-    scrot
-    cabal-install
-    xcompmgr
 )
 
 PIP_PACKAGES=(
+    jedi
+    flake8
+    virtualenv
+    virtualenvwrapper
     pandas
     seaborn
     scikit-learn
