@@ -131,7 +131,7 @@ function ocr = {
 }
 
 # Spacemacs
-export TERM=xterm-256color
+export TERM=eterm-color
 
 # VIRTUALENVWRAPPER
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
