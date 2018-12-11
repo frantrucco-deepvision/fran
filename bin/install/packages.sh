@@ -10,6 +10,7 @@ APT_PACKAGES=(
 # Dev
     valgrind
     git
+    subversion
 # Python
     python3-pip
     python3-pyflakes
@@ -38,6 +39,7 @@ APT_PACKAGES=(
     texlive-science
     texlive-xetex
     texlive-luatex
+    rubber
 # Libraries
     ghostscript
     gphoto2
