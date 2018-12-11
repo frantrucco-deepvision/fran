@@ -54,18 +54,19 @@ def create_book_numbering(total_pages, sheets_per_signature=6):
 
 if __name__ == '__main__':
     try:
-        total_pages = int(input("Total number of pages: "))
-        sheets_per_signature = int(input("Number of sheets per signature: "))
-    except:
-        print("Something is wrong!")
+        total_pages = int(input("Número total de páginas: "))
+        sheets_per_signature = int(input("Número de hojas por signature: "))
+    except Exception as err:
+        print("Ocurrió un Error")
+        print(err)
         exit()
 
     print('')
     number_of_blank_pages = compute_number_of_blank_pages(total_pages, sheets_per_signature)
-    print('Number of blank pages: {}'.format(number_of_blank_pages))
+    print('Número de páginas en blanco que hay que agregar: {}'.format(number_of_blank_pages))
 
     print('')
-    print('Book Numbering')
-    print('--------------')
+    print('Numeración del libro')
+    print('--------------------')
     book_numbering = create_book_numbering(total_pages, sheets_per_signature)
     print(', '.join(map(str, book_numbering)))
