@@ -130,8 +130,6 @@ function ocr = {
     rm output_ocr.txt;
 }
 
-# Spacemacs
-export TERM=eterm-color
 
 # VIRTUALENVWRAPPER
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
