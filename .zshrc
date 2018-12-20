@@ -53,8 +53,8 @@ FZF_UNIQUE_HISTORY=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git, zsh-autosuggestions)
 
-bindkey '>>' autosuggest-execute
-bindkey '> ' autosuggest-accept
+bindkey '><' autosuggest-execute
+bindkey '<>' autosuggest-accept
 
 source $ZSH/oh-my-zsh.sh
 
