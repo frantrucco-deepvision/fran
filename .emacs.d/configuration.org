@@ -176,22 +176,14 @@
     (eyebrowse-switch-to-window-config-8)
     (if (get-buffer "*ansi-term*")
         (switch-to-buffer "*ansi-term*")
-        (ansi-term "/usr/bin/zsh"))
-    (evil-emacs-state))
+        (ansi-term "/usr/bin/zsh")))
 
-  (defun ansi-term-and-rename-to-second ()
+  (defun eyebrowse-goto-todo-workspace ()
+  "Switch to workspace 9, open todo.org file."
     (interactive)
-    (ansi-term "/usr/bin/zsh")
-    (rename-buffer "*ansi-term*<2>"))
+    (eyebrowse-switch-to-window-config-0)
+    (find-file "~/Dropbox/todo/todo.org"))
 
-  (defun eyebrowse-goto-second-shell-workspace ()
-  "Switch to workspace 9, run term emulator."
-    (interactive)
-    (eyebrowse-switch-to-window-config-9)
-    (if (get-buffer "*ansi-term*<2>")
-        (switch-to-buffer "*ansi-term*<2>")
-        (ansi-term-and-rename-to-second))
-    (evil-emacs-state))
   (defun eyebrowse-goto-configuration-workspace ()
   "Switch to workspace 0, open package configuration file."
     (interactive)
@@ -223,7 +215,7 @@
       'eyebrowse-goto-first-shell-workspace)
 
     (define-key eyebrowse-mode-map (kbd "M-9")
-      'eyebrowse-goto-second-shell-workspace)
+      'eyebrowse-goto-todo-workspace)
 
     (define-key eyebrowse-mode-map (kbd "M-0")
       'eyebrowse-goto-configuration-workspace)
