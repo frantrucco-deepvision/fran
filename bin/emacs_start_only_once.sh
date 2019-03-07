@@ -6,4 +6,4 @@ check_process() {
     [ `pgrep -n $1` ] && return 1 || return 0;
 };
 
-check_process emacs26 && emacs26;
+check_process emacs26 && emacs26 -mm;
