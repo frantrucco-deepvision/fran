@@ -652,6 +652,25 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 * Bindings
 
 #+BEGIN_SRC emacs-lisp
+(defun compile-thesis ()
+  (interactive)
+  (save-buffer)
+  (shell-command "cd /home/fran/Dropbox/thesis/francisco-trucco/thesis; make &> /dev/null; if [ $? -ne 0 ]; then echo 'Compilation Error'; else echo 'Ok'; fi"))
+
+(defun clean-thesis ()
+  (interactive)
+  (shell-command "cd /home/fran/Dropbox/thesis/francisco-trucco/thesis; make clean;"))
+
+(defun lsti ()
+  (interactive)
+  (cond
+    ((eq evil-state 'visual)
+     (fset 'lstinline [?s ?} ?i ?\\ ?l ?s ?t ?i ?n ?l ?i ?n ?e escape ?f ?}]))
+
+    ((eq evil-state 'normal)
+     (fset 'lstinline [?a ?\\ ?l ?s ?t ?i ?n ?l ?i ?n ?e ?\{ ?\} escape ?h ?l ?i])))
+
+  (execute-kbd-macro (symbol-function 'lstinline)))
 
   (evil-leader/set-key "ft"    'neotree-toggle
                        "bb"    'switch-to-buffer
@@ -660,7 +679,10 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
                        "gs"    'magit-status
                        "<SPC>" 'helm-M-x
                        "/"     'projectile-ag
-                       "p"     'preview-buffer)
+                       "s"     'save-buffer
+                       "c"     'compile-thesis
+                       "l"     'clean-thesis
+                       "i"     'lsti)
 
 #+END_SRC
 
@@ -740,4 +762,6 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
     (set-background-color "black")
 
 #+END_SRC
+
+
 
