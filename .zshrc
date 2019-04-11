@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="refined"
 FZF_UNIQUE_HISTORY=1
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -138,65 +138,25 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Anaconda
-export PATH=/home/fran/.anaconda3/bin:$PATH
-
 # npm
 export PATH="$PATH:$HOME/npm/bin"
 
 # p ipython
 alias p='ipython'
 
-# pygments (colourful cat)
-function c = {
-    if [[ $(cat $1 | wc -l) -ge 30 ]]
-    then
-        pygmentize -g $1 | less
-        pygmentize -g $1
-    else
-        pygmentize -g $1
-    fi
-}
-
-function cl = {
-    pygmentize -g $1 | less
-    pygmentize -g $1
-}
-
-
-function face = {
-    text="127.0.0.1    localhost\n";
-    text+="127.0.1.1    fran-laptop\n\n"
-    text+="::1          ip6-localhost ip6-loopback\n";
-    text+="fe00::0      ip6-localnet\n";
-    text+="ff00::0      ip6-mcastprefix\n";
-    text+="ff02::1      ip6-allnodes\n";
-    text+="ff02::2      ip6-allrouters\n";
-    text+="8.8.8.8      www.facebook.com\n";
-    echo $text > newasdflasdfasdfklj.asdfkjasldkfj;
-    sudo cp newasdflasdfasdfklj.asdfkjasldkfj /etc/hosts;
-    rm newasdflasdfasdfklj.asdfkjasldkfj;
-}
-
-
-# latex
-function latexc = {
-    setopt normstarsilent; mkdir target -p;
-    pdflatex -output-directory=target $1;
-    pdflatex -output-directory=target $1;
-}
 
 # Who uses python2??? :P
 alias python=python3
-
-# for some weird reason octave runs the gui version by default
-alias octave='octave --no-window-system'
 
 # I'm not that smart
 alias rm=trash
 
 # Ghostscript is fucking annoying
 alias gs='gst'
+
+#
+function va { atril $1 & }
+function vo { okular $1 & }
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

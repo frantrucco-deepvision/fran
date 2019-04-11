@@ -60,6 +60,7 @@ APT_PACKAGES=(
     w3m
     trash-cli
 # Power User
+    guake
     zsh
     powertop
     tmux

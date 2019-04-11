@@ -10,6 +10,9 @@
 (add-to-list 'package-archives
              '("org" . "http://orgmode.org/elpa/") t)
 
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+
 ;; keep the installed packages in .emacs.d
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (package-initialize)
@@ -603,7 +606,6 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 
   (add-hook 'LaTeX-mode-hook #'outline-minor-mode)
   (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
   (use-package latex-math-preview
     :ensure t)
@@ -647,6 +649,13 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
 
 #+END_SRC
 
+** Octave
+
+#+BEGIN_SRC emacs-lisp
+  ;; autolad octave mode for *.m-files
+     (setq auto-mode-alist
+     (cons '("\\.m$" . octave-mode) auto-mode-alist))
+#+END_SRC
 * Bindings
 
 #+BEGIN_SRC emacs-lisp
