@@ -533,10 +533,11 @@
     (flycheck-select-checker 'python-flake8)
 
     ;; pythom mode keybindings
-    (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
-    (define-key python-mode-map (kbd "M-,") 'jedi:goto-definition-pop-marker)
-    (define-key python-mode-map (kbd "M-/") 'jedi:show-doc)
-    (define-key python-mode-map (kbd "M-?") 'helm-jedi-related-names)
+
+    (define-key python-mode-map (kbd "C-.") 'jedi:goto-definition)
+    (define-key python-mode-map (kbd "C-,") 'jedi:goto-definition-pop-marker)
+    (define-key python-mode-map (kbd "C-/") 'jedi:show-doc)
+    (define-key python-mode-map (kbd "C-?") 'helm-jedi-related-names)
 )
 
 (add-hook 'python-mode-hook 'my-python-hooks)
