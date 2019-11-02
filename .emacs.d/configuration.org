@@ -76,7 +76,6 @@
 
 ** Evil
 #+BEGIN_SRC emacs-lisp
-
   ;; This work-around prevents evil mode from auto-completing
   ;; after pressing <ESC>
   (setq evil-want-abbrev-expand-on-insert-exit nil)
@@ -125,30 +124,30 @@
 
 #+BEGIN_SRC emacs-lisp
 
-  ;; Turn touchpad off when using emacs
-  ;; This depends on ~/bin/touchpad_id.sh in order to work properly
+    ;; Turn touchpad off when using emacs
+    ;; This depends on ~/bin/touchpad_id.sh in order to work properly
 
-  (defconst XINPUT-TOUCHPAD-ID (shell-command-to-string "~/bin/touchpad_id.sh"))
-  (defconst XINPUT-DISABLE-TOUCHPAD (concat "xinput --disable " XINPUT-TOUCHPAD-ID))
-  (defconst XINPUT-ENABLE-TOUCHPAD  (concat "xinput --enable " XINPUT-TOUCHPAD-ID))
-  (defconst SYNCLIENT-DISABLE-TOUCHPAD "synclient TouchpadOff=1")
-  (defconst SYNCLIENT-ENABLE-TOUCHPAD  "synclient TouchpadOff=0")
+    (defconst XINPUT-TOUCHPAD-ID (shell-command-to-string "~/bin/touchpad_id.sh"))
+    (defconst XINPUT-DISABLE-TOUCHPAD (concat "xinput --disable " XINPUT-TOUCHPAD-ID))
+    (defconst XINPUT-ENABLE-TOUCHPAD  (concat "xinput --enable " XINPUT-TOUCHPAD-ID))
+    (defconst SYNCLIENT-DISABLE-TOUCHPAD "synclient TouchpadOff=1")
+    (defconst SYNCLIENT-ENABLE-TOUCHPAD  "synclient TouchpadOff=0")
 
-  (defconst DISABLE-TOUCHPAD XINPUT-DISABLE-TOUCHPAD)
-  (defconst ENABLE-TOUCHPAD  XINPUT-ENABLE-TOUCHPAD)
+    (defconst DISABLE-TOUCHPAD XINPUT-DISABLE-TOUCHPAD)
+    (defconst ENABLE-TOUCHPAD  XINPUT-ENABLE-TOUCHPAD)
 
-  (defun touchpad-off (&optional frame)
-    (interactive)
-    (shell-command DISABLE-TOUCHPAD))
+    (defun touchpad-off (&optional frame)
+      (interactive)
+      (shell-command DISABLE-TOUCHPAD))
 
-  (defun touchpad-on (&optional frame)
-    (interactive)
-    (shell-command ENABLE-TOUCHPAD))
+    (defun touchpad-on (&optional frame)
+      (interactive)
+      (shell-command ENABLE-TOUCHPAD))
 
-(add-hook 'focus-in-hook #'touchpad-off)
-(add-hook 'focus-out-hook #'touchpad-on)
-(add-hook 'delete-frame-functions #'touchpad-on)
-(add-hook 'kill-emacs-hook #'touchpad-on)
+  (add-hook 'focus-in-hook #'touchpad-off)
+  (add-hook 'focus-out-hook #'touchpad-on)
+  (add-hook 'delete-frame-functions #'touchpad-on)
+  (add-hook 'kill-emacs-hook #'touchpad-on)
 
 #+END_SRC
 
@@ -404,6 +403,11 @@
   ;; Split horizontally
   (setq split-height-threshold nil)
   (setq split-width-threshold 80)
+
+  ;; Modify the syntax table to treat the _ character as a word
+  ;; constituent
+  (modify-syntax-entry ?_ "w")
+  (modify-syntax-entry ?$ "_")
 #+END_SRC
 
 ** Built-in Packages
@@ -457,7 +461,13 @@
 (use-package company
   :ensure t
   :config
-  (global-company-mode))
+  (global-company-mode)
+  (defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+  (add-hook 'python-mode-hook 'my/python-mode-hook)
+
+)
 
 (use-package google-translate
   :ensure t
@@ -505,6 +515,15 @@
 ** Python
 
    #+begin_src elisp
+(use-package company-jedi
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (setq jedi:complete-on-dot t)
+  ;; You must run this once:
+  ;; M-x jedi:install-server
+)
+
 (defun my-python-hooks()
     (interactive)
     (setq tab-width     4
@@ -656,6 +675,12 @@ See [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/15/Using-org-ref-to-keep-yo
      (setq auto-mode-alist
      (cons '("\\.m$" . octave-mode) auto-mode-alist))
 #+END_SRC
+** Prolog
+#+BEGIN_SRC emacs-lisp
+(use-package ob-prolog
+  :ensure t)
+#+END_SRC
+
 * Bindings
 
 #+BEGIN_SRC emacs-lisp
